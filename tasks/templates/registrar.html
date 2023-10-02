@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+  <script src="{% static 'js/script.js'%}"></script>
+  <script src="{% static 'js/font.js'%}"></script>
+
+  <div class="image-container">
+    <img src="{% static 'media/logo.jpg'%}" alt="Imagen 1">
+    <img src="media/logo.jpg" alt="Imagen 2">
+    <img src="media/logo.jpg" alt="Imagen 3">
+</div>
+{% endblock %}

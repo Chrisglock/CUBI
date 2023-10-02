@@ -1,7 +1,56 @@
 {% extends 'base.html' %} {% block content %}
+{% load static %}
+<body>
+  <main>
 
-<div class="container">
-  <h1>Home</h1>
-</div>
+      <div class="cover">
+          
+          <div class="text__information-cover">
+              <h1>Centro investigativo web Universidad de O'higgins.</h1>
+
+              <p>En el corazón de la innovación y el conocimiento, nuestro centro 
+                  investigativo web de  la Universidad de O'Higgins es un faro de
+                   descubrimiento y excelencia. Nos dedicamos a impulsar la investigación científica 
+                   y tecnológica, abordando desafíos multidisciplinarios que impactan positivamente en la sociedad y el mundo.
+          </p>
+
+              <div class="buttons__cover">
+                <a href="/signup" class="btn__header-register">Registrarse</a>
+                  
+                  <input type="button" class="btn__readMore-cover" value="Leer más">
+              </div>
+
+          </div>
+
+          <div class="media__cover">
+            
+              <video src="{% static 'media/Covid01.mp4' %}" autoplay playinline loop muted preload="auto"></video>
+          </div>
+
+
+      </div>
+
+      <div class="container__banner">
+
+          <div class="banner">
+              <div class="banner__icon-heart">
+                  
+                  <img src="{% static 'media/Miniseq.png' %}" id="icon_heart" alt="">
+              </div>
+              <div class="banner__icon-fire">
+                <img src="{% static 'media/pngegg.png' %}" id="icon_fire" alt="">
+              </div>
+              <div class="banner__text">
+                  <h2>Primer genoma humano secuenciado en Chile.</h2>
+                  <a href="#">Leer más</a>
+              </div>
+          </div>
+
+      </div>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
 
 {% endblock %}
