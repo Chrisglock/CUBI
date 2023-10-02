@@ -10,18 +10,21 @@
 <p>
 {{error}}
 </p>
-
+<div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5">
 <form action="/signin/" method="POST" class"form-group">
-  <h1>Signin</h1>
+  <h1>Ingresar</h1>
   {% csrf_token %}
   {{form.as_p}}
 
-  <div>
+  <div style="display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;" >
     <button class="btn__header-register">
-      Signin
+      Ingresar
     </button>
   </div>
 
 </form>
-
+</div>
 {% endblock %}

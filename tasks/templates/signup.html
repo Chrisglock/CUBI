@@ -6,15 +6,24 @@
 <div class="groupsign">
 
 
-
   {{error}}
-  <form action="/signup/" method="POST" class="form-group">
-    <h1 >Sign up</h1>
+  <div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5">
+  <form action="/signup/" method="POST" class="form-group p-4">
+    <h1 >Registrarse</h1>
     {% csrf_token %}
  
     {{form.as_p}}
 
-    <button class="btn__header-register">Signup</button>
+    <div style="display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;" >
+      <button class="btn__header-register">
+        Registrarse
+      </button>
+    </div>
+
   </form>
+</div>
 </div>
 {% endblock %}
