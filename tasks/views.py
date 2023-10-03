@@ -6,9 +6,9 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo
-
+from django.contrib.auth import password_validation
 from .forms import TaskForm,RegisterUserForm,LoginUserForm
-
+from django import forms
 # Create your views here.
 
 
@@ -19,15 +19,19 @@ def signup(request):
 
         if request.POST["password1"] == request.POST["password2"]:
             try:
+                
                 User = uu.objects.create_user(
                     username=request.POST["username"],email=request.POST["email"],password=request.POST["password1"],first_name=request.POST["first_name"],last_name=request.POST["last_name"])
+                password_validation.validate_password(request.POST["password1"], User)
                 User.save()
                 login(request, User)
                 return redirect('userhome')
             except IntegrityError:
-                return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Username already exists."})
+                return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Ese usuario ya existe."})
+            except forms.ValidationError:
+                return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Contraseña no cumple requisitos."})
 
-        return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Passwords did not match."})
+        return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Las contraseñas no coinciden."})
 
 @login_required
 def userhome(request):
