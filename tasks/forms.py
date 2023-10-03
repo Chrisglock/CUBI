@@ -7,8 +7,8 @@ from django import forms
 
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
-    first_name = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
-    last_name = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
+    first_name = forms.CharField(label='Nombres',max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
+    last_name = forms.CharField(label='Apellidos',max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','password1','password2')
@@ -20,7 +20,7 @@ class RegisterUserForm(UserCreationForm):
         
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
-    password = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
+    password = forms.CharField(label='Contraseña',max_length=50,widget=forms.PasswordInput(attrs={'class':'form-control'},))
     class Meta:
         model = User
         fields = ('username','password1')

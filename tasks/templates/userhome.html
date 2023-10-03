@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCI UOH</title>
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+        <link rel="stylesheet" href="{% static 'css/estilos2.css' %}">
+        <script src="{% static 'js/script.js'%}"></script>
+        <script src="{% static 'js/font.js'%}"></script>
+</head>
+<body>
+ <nav class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="logo"><img src="{% static 'media/logo.jpg' %}" alt=""></a>
+
+            <div class="search-box">
+                <img src="{% static 'media/barra.png' %}">
+                <input type="text" placeholder="Buscar">
+            </div>
+            
+
+        </div>
+        <div class="navbar-center">
+            <ul>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/casa.png' %}"> <span style="padding-left: 7px;">Inicio</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/grupo.png' %}"> <span style="padding-left: 7px;">Equipo</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/maletin.png' %}"> <span style="padding-left: 7px;">Trabajos</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/periodico2.png' %}"> <span style="padding-left: 7px;">Crear noticia</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/notificacion.png' %}"> <span style="padding-left: 7px;">Notificaciones</span></a></li>             
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="online">
+                <img src="{% static 'media/profile.png' %}" class="nav-profile-img">
+            </div>
+        </div>
+ </nav>
+            
+<!------------- aca se termina el navbar jaja ----------->
+<div class="container">
+
+    <!------------- Barra izquierda ----------->
+
+    <div class="left-sidebar">
+        <div class="sidebar-profile-box">
+            <img src="{% static 'media/profile.png' %}" width="100%">
+            <div class="sidebar-profile-info">
+                <h1>Esclavo Programador</h1>
+                <h3>Desarrollo web para Virtualminds</h3>
+                <ul>
+                    <li><h3>Sobre mi:</h3> <span></span></li>
+                    <li>-Universidad de O'higgins <span></span></li>
+                    <li>-Doctorado en Harvard en ciencias de la computacion <span></span></li>
+                    <li>-Desarrollo Full Stack <span></span></li>
+                    <li>-Ceo virtual Minds <span></span></li>
+                </ul>
+            </div>
+            <div class="sidebar-profile-link">
+                <a ahref="#"><img src="{% static 'media/linkedin.png' %}" alt= "" ></a>
+                <a ahref="#"><img src="{% static 'media/twitter.png' %}" alt= "" ></a>
+                <a ahref="#"><img src="{% static 'media/instagram.png' %}" alt= "" ></a>
+                <a ahref="#"><img src="{% static 'media/youtube.png' %}" alt= "" ></a>
+            </div>
+        </div>
+        <div class="siderbar-activity">
+            <h3>Reciente</h3>
+            <a ahref="#"><img src="{% static 'media/reciente.png' %}">Desarrollo web</a>
+            <a ahref="#"><img src="{% static 'media/reciente.png' %}">Virtualminds</a>
+            <a ahref="#"><img src="{% static 'media/reciente.png' %}">React</a>
+            <a ahref="#"><img src="{% static 'media/reciente.png' %}">HTML5</a>
+            <h3>Grupos de trabajo</h3>
+            <a ahref="#"><img src="{% static 'media/grupo.png' %}">Virtualminds</a>
+            <a ahref="#"><img src="{% static 'media/grupo.png' %}">Cluster OUH</a>
+            <a ahref="#"><img src="{% static 'media/grupo.png' %}">Di Genoma lab</a>
+            <a ahref="#"><img src="{% static 'media/grupo.png' %}">Ucampus</a>
+        </div>
+    </div>
+    
+    <!------------- Barra main ----------->
+    <div class="main-content">
+        <div class="create-post">
+            <div class="create-post-input">
+                <img src="{% static 'media/profile.png' %}">
+                <textarea rows="2" placeholder="Escribe un post"></textarea>
+            </div>
+            <div class="create-post-links">
+                <li><img src="{% static 'media/camara.png' %}">Foto</li>
+                <li><img src="{% static 'media/video.png' %}">Video</li>
+                <li><img src="{% static 'media/periodico3.png' %}">Evento</li>
+                <li>Publicar</li>
+            </div>
+        </div>
+    </div>
+    
+    <!------------- Barra derecha ----------->
+    <div class="right-sidebar">
+        <div class="sidebar-news">
+            <img src="{% static 'media/periodico.png' %}" class="info-icon">
+            <h3>Noticias destacadas</h3>
+            <a href="#">UOH investigaciones en desarrollo </a>
+            <span>Hace 1 Día &middot; 10,934 Lectores</span>
+            <!-- Resto del contenido -->
+            <a href="#" class="read-more-link">Leer mas</a>
+        </div>
+    </div>
+    </div>
+    </body>
+    </html>
+    

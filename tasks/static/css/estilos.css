@@ -10,6 +10,31 @@ a {
     font-family: 'Roboto', sans-serif;
 }
 
+.nav-profile-img{
+    width: 40px;
+    border-radius:  50%;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.online{
+    position: relative;
+}
+.online::after{
+    content:'';
+    width: 7px;
+    height: 7px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    right: 0px;
+    top: 0px;
+    background: #41db51;
+    position: absolute;
+
+}
+
+
 body{
     background: white;
 }
@@ -345,3 +370,4 @@ main{
     top: 50%;
     transform: translateY(-50%);
 }
+

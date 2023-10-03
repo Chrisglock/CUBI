@@ -5,7 +5,7 @@ from django.contrib.auth.models import User as uu
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import Task
+from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo
 
 from .forms import TaskForm,RegisterUserForm,LoginUserForm
 
@@ -23,12 +23,16 @@ def signup(request):
                     username=request.POST["username"],email=request.POST["email"],password=request.POST["password1"],first_name=request.POST["first_name"],last_name=request.POST["last_name"])
                 User.save()
                 login(request, User)
-                return redirect('tasks')
+                return redirect('userhome')
             except IntegrityError:
                 return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Username already exists."})
 
         return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Passwords did not match."})
 
+@login_required
+def userhome(request):
+    #tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
+    return render(request, 'userhome.html')
 
 @login_required
 def tasks(request):
@@ -61,6 +65,9 @@ def home(request):
 
 def registrar(request):
     return render(request, 'registrar.html')
+
+def userhome(request):
+    return render(request, 'userhome.html')
     
 
 @login_required
@@ -76,10 +83,10 @@ def signin(request):
         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request, 'signin.html', {"form": LoginUserForm, "error": "Username or password is incorrect."})
+            return render(request, 'signin.html', {"form": LoginUserForm, "error": "Usuario o contraseña incorrecta."})
 
         login(request, user)
-        return redirect('tasks')
+        return redirect('userhome')
 
 @login_required
 def task_detail(request, task_id):
