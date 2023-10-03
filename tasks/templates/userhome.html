@@ -48,8 +48,8 @@
         <div class="sidebar-profile-box">
             <img src="{% static 'media/profile.png' %}" width="100%">
             <div class="sidebar-profile-info">
-                <h1>Esclavo Programador</h1>
-                <h3>Desarrollo web para Virtualminds</h3>
+                <h1>{{ user.username }}</h1>
+                <h3>{{ user.email }}</h3>
                 <ul>
                     <li><h3>Sobre mi:</h3> <span></span></li>
                     <li>-Universidad de O'higgins <span></span></li>
