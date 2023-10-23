@@ -1,43 +1,62 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.models import User as uu
+from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo
 from django.contrib.auth import password_validation
-from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm
+from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario
 from django import forms
-from django.shortcuts import render
+from django.core.files.storage import default_storage
 # Create your views here.
 
 
 def signup(request):
-    if request.method == 'GET':
-        return render(request, 'signup.html', {"form": RegisterUserForm})
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data["password1"] == form.cleaned_data["password2"]:
+                try:
+                    user = User.objects.create_user(
+                        username=form.cleaned_data["username"],
+                        email=form.cleaned_data["email"],
+                        password=form.cleaned_data["password1"],
+                        first_name=form.cleaned_data["first_name"],
+                        last_name=form.cleaned_data["last_name"]
+                    )
+                    login(request, user)
+                    return redirect('crear_noticia') 
+                except IntegrityError:
+                    return render(request, 'signup.html', {"form": form, "error": "El nombre de usuario o correo electrónico ya está en uso. Por favor, elige otro."})
+            else:
+                return render(request, 'signup.html', {"form": form, "error": "Las contraseñas no coinciden."})
+        else:
+            return render(request, 'signup.html', {"form": form, "error": "El formulario no es válido."})
     else:
+        form = RegisterUserForm()
+        return render(request, 'signup.html', {"form": form})
 
-        if request.POST["password1"] == request.POST["password2"]:
-            try:
-                
-                User = uu.objects.create_user(
-                    username=request.POST["username"],email=request.POST["email"],password=request.POST["password1"],first_name=request.POST["first_name"],last_name=request.POST["last_name"])
-                password_validation.validate_password(request.POST["password1"], User)
-                User.save()
-                login(request, User)
-                return redirect('userhome')
-            except IntegrityError:
-                return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Ese usuario ya existe."})
-            except forms.ValidationError:
-                return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Contraseña no cumple requisitos."})
+def set(request):
+    user_profile = PerfilUsuario.objects.get(user=request.user)
 
-        return render(request, 'signup.html', {"form": RegisterUserForm, "error": "Las contraseñas no coinciden."})
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            # Verificar si hay una imagen asociada y eliminarla si existe
+            if user_profile.imagen_perfil:
+                # Guardar la ruta del archivo a eliminar
+                file_path = user_profile.imagen_perfil.path
+                # Eliminar la imagen antigua del sistema de archivos
+                default_storage.delete(file_path)
+            form.save()
+            return redirect('userhome')  # Redirigir a la página de inicio o a donde desees
+    else:
+        form = UserForm(instance=user_profile)
 
-@login_required
-def userhome(request):
-    #tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'userhome.html')
+    context = {'form': form}
+    return render(request, 'set.html', context)
 
 @login_required
 def tasks(request):
@@ -96,8 +115,18 @@ def registrar(request):
     return render(request, 'registrar.html')
 
 def userhome(request):
-    return render(request, 'userhome.html')
+    user_profile = PerfilUsuario.objects.get(user=request.user)
     
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('userhome')
+    else:
+        form = UserForm(instance=user_profile)
+
+    context = {'form': form}
+    return render(request, 'userhome.html', context)
 
 @login_required
 def signout(request):

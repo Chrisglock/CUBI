@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo
+from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost,AplicacionBolsaTrabajo,PerfilUsuario
 
 # Register your models here.
 class TaskAdmin(admin.ModelAdmin):
@@ -33,4 +33,7 @@ class BolsaTrabajoPostAdmin(admin.ModelAdmin):
 
 @admin.register(AplicacionBolsaTrabajo)
 class AplicacionBolsaTrabajoAdmin(admin.ModelAdmin):
+    pass
+@admin.register(PerfilUsuario)
+class PerfilUsuario(admin.ModelAdmin):
     pass

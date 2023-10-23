@@ -4,6 +4,8 @@ from django.db.models.fields.files import ImageField
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 # Create your models here.
+def default_profile_image():
+    return "media/profile.png"
 
 
 class Usuario(models.Model):
@@ -14,11 +16,25 @@ class Usuario(models.Model):
     descripcion = models.TextField()
     social_media_link = models.TextField()
     alumno = models.BooleanField()
-    imagen_perfil = ImageField(upload_to='profilepics')
+    imagen_perfil = models.ImageField(default="profile.png", null=True, blank=True)
     admin = models.BooleanField()
     institucion_id = models.ForeignKey('Institucion', on_delete=models.CASCADE, default=0,blank=True)
     def __str__(self) -> str:
-        return self.nombre   
+        return self.nombre  
+
+ # Modelo de Perfil
+class PerfilUsuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=255, null=True)
+    email = models.EmailField(null=True)
+    descripcion = models.TextField(null=True)
+    Linkedin = models.URLField(null=True, blank=True)
+    alumno = models.BooleanField(null=True, default=False)
+    imagen_perfil = models.ImageField(null=True,default="profile.png")
+    admin = models.BooleanField(null=True, default=False)
+
+    def __str__(self):
+        return self.nombre
 # Modelo de Posts
 class Post(models.Model):
     id_post = models.AutoField(primary_key=True)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +34,7 @@
         </div>
         <div class="navbar-right">
             <div class="online">
-                <img src="{% static 'media/profile.png' %}" class="nav-profile-img">
+                <img src="{{ form.instance.imagen_perfil.url }}" class="nav-profile-img">
             </div>
         </div>
  </nav>
@@ -46,16 +46,12 @@
 
     <div class="left-sidebar">
         <div class="sidebar-profile-box">
-            <img src="{% static 'media/profile.png' %}" width="100%">
+            <img src="{{ form.instance.imagen_perfil.url }}" width="100%">
             <div class="sidebar-profile-info">
                 <h1>{{ user.username }}</h1>
                 <h3>{{ user.email }}</h3>
                 <ul>
-                    <li><h3>Sobre mi:</h3> <span></span></li>
-                    <li>-Universidad de O'higgins <span></span></li>
-                    <li>-Doctorado en Harvard en ciencias de la computacion <span></span></li>
-                    <li>-Desarrollo Full Stack <span></span></li>
-                    <li>-Ceo virtual Minds <span></span></li>
+                    <p>Probando: {{ form.instance.descripcion|linebreaks }}</p>
                 </ul>
             </div>
             <div class="sidebar-profile-link">

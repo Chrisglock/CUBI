@@ -1,16 +1,19 @@
 from typing import Any
 from django.forms import ModelForm
-from .models import Task,Noticia
+from .models import Task,Noticia,PerfilUsuario
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
-from django.db import models
-#from tinymce import HTMLField,TinyMCE
-class RegisterUserForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
-    first_name = forms.CharField(label='Nombres',max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
-    last_name = forms.CharField(label='Apellidos',max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
 
+#from tinymce import HTMLField,TinyMCE
+from .models import *
+class UserForm(ModelForm):
+	class Meta:
+		model = PerfilUsuario
+		fields = '__all__'
+		exclude = ['user',"alumno","admin",]
+
+class RegisterUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','password1','password2')
@@ -19,6 +22,10 @@ class RegisterUserForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+
 
         
 class LoginUserForm(AuthenticationForm):
@@ -43,6 +50,14 @@ class NoticiaForm(ModelForm):
         self.fields['categoria'].widget.attrs['class'] = 'form-control'
         self.fields['descripcion'].widget.attrs['class'] = 'form-control'
         self.fields['imagen'].widget.attrs['class'] = 'form-control'
+
+
+class UserForm(ModelForm):
+	class Meta:
+		model = PerfilUsuario
+		fields = '__all__'
+		exclude = ['user',"alumno","admin",]
+
         
 
 #class DescForm(ModelForm):
