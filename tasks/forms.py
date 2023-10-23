@@ -1,12 +1,11 @@
 from typing import Any
 from django.forms import ModelForm
-from .models import Task
+from .models import Task,Noticia
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.db import models
-
-
+#from tinymce import HTMLField,TinyMCE
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
     first_name = forms.CharField(label='Nombres',max_length=50,widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -33,6 +32,18 @@ class TaskForm(ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'important']
+
+class NoticiaForm(ModelForm):
+    class Meta:
+        model = Noticia
+        fields = ['titulo','descripcion','imagen' ,'categoria']#'imagen','fecha_publicacion '
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super(NoticiaForm,self).__init__(*args, **kwargs)
+        self.fields['titulo'].widget.attrs['class'] = 'form-control'
+        self.fields['categoria'].widget.attrs['class'] = 'form-control'
+        self.fields['descripcion'].widget.attrs['class'] = 'form-control'
+        self.fields['imagen'].widget.attrs['class'] = 'form-control'
+        
 
 #class DescForm(ModelForm):
  #   class Meta:

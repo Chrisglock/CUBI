@@ -28,7 +28,7 @@
                 <li><a href="#"class="activate-link"><img src="{% static 'media/casa.png' %}"> <span style="padding-left: 7px;">Inicio</span></a></li>
                 <li><a href="#"class="activate-link"><img src="{% static 'media/grupo.png' %}"> <span style="padding-left: 7px;">Equipo</span></a></li>
                 <li><a href="#"class="activate-link"><img src="{% static 'media/maletin.png' %}"> <span style="padding-left: 7px;">Trabajos</span></a></li>
-                <li><a href="#"class="activate-link"><img src="{% static 'media/periodico2.png' %}"> <span style="padding-left: 7px;">Crear noticia</span></a></li>
+                <li><a href="{% url 'noticias'%}"class="activate-link"><img src="{% static 'media/periodico2.png' %}"> <span style="padding-left: 7px;">Editar Noticias</span></a></li>
                 <li><a href="#"class="activate-link"><img src="{% static 'media/notificacion.png' %}"> <span style="padding-left: 7px;">Notificaciones</span></a></li>             
             </ul>
         </div>
@@ -82,16 +82,8 @@
     <!------------- Barra main ----------->
     <div class="main-content">
         <div class="create-post">
-            <div class="create-post-input">
-                <img src="{% static 'media/profile.png' %}">
-                <textarea rows="2" placeholder="Escribe un post"></textarea>
-            </div>
-            <div class="create-post-links">
-                <li><img src="{% static 'media/camara.png' %}">Foto</li>
-                <li><img src="{% static 'media/video.png' %}">Video</li>
-                <li><img src="{% static 'media/periodico3.png' %}">Evento</li>
-                <li>Publicar</li>
-            </div>
+            {% block content %}
+            {% endblock %}
         </div>
     </div>
     

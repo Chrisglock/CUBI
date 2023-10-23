@@ -8,16 +8,20 @@
 <div class="groupsign">
 
 
-<div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5">
-<form action="/signin/" method="POST" class"form-group">
+<div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5"  style="display: flex;
+justify-content: space-around;
+align-items: center;
+width: fit-content;
+margin: auto;" >
+<form action="/signin/" method="POST" class="form-group">
   <h1>Ingresar</h1>
+  {% csrf_token %}
     {% if error %} 
     <div class="alert alert-warning">
         <span class="mdi mdi-alert-outline"></span>
       <p>{{error}}</p>
     </div>    
   {% endif %}
-  {% csrf_token %}
   {{form.as_p}}
 
   <div style="display: flex;

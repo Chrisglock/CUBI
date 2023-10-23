@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields.files import ImageField 
+from django.utils import timezone
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 
@@ -32,11 +34,11 @@ class Post(models.Model):
 class Noticia(models.Model):
     id_noticias = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=255)
-    descripcion = models.TextField()
-    fecha_publicacion = models.DateTimeField()
-    imagen = ImageField(upload_to='news')
-    categoria = models.CharField(max_length=255)
-    id_autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='noticias')
+    descripcion = RichTextField()
+    fecha_publicacion =  models.DateTimeField(default=timezone.now)
+    imagen = ImageField(upload_to='fotonoticias', blank=True)
+    categoria = models.CharField(max_length=255, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self) -> str:
         return self.titulo
 # Modelo de Proyecto

@@ -1,5 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/font.js'%}"></script>
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 <body>
   <main>
 
@@ -24,7 +28,7 @@
 
           <div class="media__cover">
             
-              <video src="{% static 'media/Covid01.mp4' %}" autoplay playinline loop muted preload="auto"></video>
+              <video src="{% static 'media/dna.mp4' %}" autoplay playinline loop muted preload="auto"></video>
           </div>
 
 
@@ -49,8 +53,6 @@
       </div>
 
   </main>
-
-  <script src="js/script.js"></script>
 </body>
 
 {% endblock %}

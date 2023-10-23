@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from tasks import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('tinymce/',include("tinymce.urls")),#tinymce
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),
     path('tasks/', views.tasks, name='tasks'),
@@ -30,5 +33,12 @@ urlpatterns = [
     path('taks/<int:task_id>/complete', views.complete_task, name='complete_task'),
     path('tasks/<int:task_id>/delete', views.delete_task, name='delete_task'),
     path('registrar/', views.registrar, name='registrar'),
-    path('userhome/', views.userhome, name='userhome')
+    path('userhome/', views.userhome, name='userhome'),
+    path('crear_noticia/', views.crear_noticia, name='crear_noticia'),
+    path('noticias/', views.noticias, name='noticias'),
+    path('noticias/<int:id_noticias>', views.noticia_detalle, name='noticia_detalle'),
+    path('noticias/<int:id_noticias>/borrar', views.borrar_noticia, name='borrar_noticia'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

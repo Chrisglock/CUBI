@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
+
+<!-- CSS Libraries -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="lib/slick/slick.css" rel="stylesheet">
+<link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+     
+
+<h1>Editar noticias</h1>
+
+<body>
+<!-- Category News Start-->
+<div class="cat-news">
+    <div class="container">
+        <div class="row">
+          
+            <div class="row-md-4 p-2 ">
+              
+                <div class="row cn-slider">
+                  
+                    <div class="row-md-4 p-2">
+                      {% for noticia in noticias %}
+                      <div class="cn-img">
+                          <a href="{% url 'noticia_detalle' noticia.id_noticias %}">
+                          <img src="{{noticia.imagen.url}}" style="width: 350px; height: 255px;"/>
+                          <div class="cn-title">
+                            <h1 style="color: white; z-index: 2;">{{noticia.titulo}}</h1>
+                          </div>
+                          </a>
+                      </div>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+
+</body>
+{% endblock %}
+   
+<!--
+  <ul>
+  {% for noticia in noticias %}
+  <li>
+    <a href="{% url 'noticia_detalle' noticia.id_noticias %}">
+      <strong>{{noticia.titulo}}</strong>
+      <img src="{{noticia.imagen.url}}"></img>
+    </a>
+    {{noticia.descripcion|safe}}
+    {{noticia.fecha_publicacion|date:'M j Y:i'}}
+    Autor: {{noticia.user.username}}
+  </li>
+  {% endfor %}
+</ul>
+-->

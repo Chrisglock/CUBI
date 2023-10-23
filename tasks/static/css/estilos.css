@@ -154,12 +154,12 @@ main{
 
 .media__cover{
     width: 50%;
+    
 }
 
 .media__cover video{
-    width: 100%;
+    width: 95%;
     margin-top: -40px;
-}
 
 /*BANNER*/
 
@@ -412,3 +412,4 @@ main{
   .alert .close:hover, .alert .open:hover {
     transform: scale(1.3);
   }
+}
