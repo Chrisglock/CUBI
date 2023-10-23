@@ -21,7 +21,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('tinymce/',include("tinymce.urls")),#tinymce
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),
     path('tasks/', views.tasks, name='tasks'),
@@ -36,8 +35,10 @@ urlpatterns = [
     path('userhome/', views.userhome, name='userhome'),
     path('crear_noticia/', views.crear_noticia, name='crear_noticia'),
     path('noticias/', views.noticias, name='noticias'),
+    path('editar_noticias/', views.editar_noticias, name='editar_noticias'),
     path('noticias/<int:id_noticias>', views.noticia_detalle, name='noticia_detalle'),
     path('noticias/<int:id_noticias>/borrar', views.borrar_noticia, name='borrar_noticia'),
+    path('ver_noticia/<int:id_noticias>', views.ver_noticia, name='ver_noticia'),
 ]
 
 if settings.DEBUG:

@@ -44,10 +44,15 @@ def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tasks.html', {"tasks": tasks})
 
-@login_required
+
 def noticias(request):
     noticias = Noticia.objects.all()
     return render(request, 'noticias.html', {"noticias": noticias})
+
+@login_required
+def editar_noticias(request):
+    noticias = Noticia.objects.all()
+    return render(request, 'editar_noticias.html', {"noticias": noticias})
 
 @login_required
 def tasks_completed(request):
@@ -136,9 +141,10 @@ def noticia_detalle(request, id_noticias):
     else:
         try:
             noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user)
-            form = NoticiaForm(request.POST, instance=noticia)
+            form = NoticiaForm(request.POST,request.FILES, instance=noticia)
+            print(request.FILES)
             form.save()
-            return redirect('noticias')
+            return redirect('editar_noticias')
         except ValueError:
             return render(request, 'noticia_detalle.html', {'noticia': noticia, 'form': form, 'error': 'Error updating noticia.'})
 
@@ -163,4 +169,8 @@ def borrar_noticia(request, id_noticias):
     noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user)
     if request.method == 'POST':
         noticia.delete()
-        return redirect('noticias')
+        return redirect('editar_noticias')
+    
+def ver_noticia(request, id_noticias):
+    noticia = get_object_or_404(Noticia, id_noticias=id_noticias)
+    return render(request, 'ver_noticia.html', {'noticia': noticia})

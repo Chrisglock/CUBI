@@ -2,6 +2,7 @@
 {% load static %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 
+
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
 
@@ -15,7 +16,7 @@
 
      
 
-<h1 style="text-align:center;">Noticias</h1>
+<h1 style="text-align:center;">Editar noticias</h1>
 
 <body>
 <!-- Category News Start-->
@@ -27,7 +28,7 @@
                   {% for noticia in noticias %}
                   <div class="col-md-4 mb-3">
                     <div class="cn-img position-relative">
-                        <a href="{% url 'ver_noticia' noticia.id_noticias %}">
+                        <a href="{% url 'noticia_detalle' noticia.id_noticias %}">
                             {% if noticia.imagen.url is not None %}
                                 <img src="{{ noticia.imagen.url }}" class="img-fluid blur-image" alt="Imagen de noticia" style="width: 350px; height: 255px;">
                             {% endif %}
@@ -48,7 +49,6 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 {% endblock %}

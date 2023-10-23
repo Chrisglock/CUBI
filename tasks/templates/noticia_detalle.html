@@ -12,7 +12,7 @@
   margin: auto;" >
   <div class="col">
     <div class="row">
-      <form method="POST" class="form-group">
+      <form action="{% url 'noticia_detalle' noticia.id_noticias %}" enctype="multipart/form-data" method="POST" class="form-group">
           {% csrf_token %}
           {{form.media}}
           {{form.as_p}}
@@ -27,7 +27,7 @@
       </form>
     </div>
     <div class="row">
-      <form action="{% url 'borrar_noticia' noticia.id_noticias %}" method="POST" class="form-group">
+      <form action="{% url 'borrar_noticia' noticia.id_noticias %}" enctype="multipart/form-data" method="POST" class="form-group">
           {% csrf_token %}
             <!-- BOTON CENTRADO-->
               <div class="container">
