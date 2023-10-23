@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/noticiasypublicacion.css' %}">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
@@ -32,9 +32,9 @@
                             {% if noticia.imagen.url is not None %}
                                 <img src="{{ noticia.imagen.url }}" class="img-fluid blur-image" alt="Imagen de noticia" style="width: 350px; height: 255px;">
                             {% endif %}
-                            <div class="cn-title position-absolute bottom-0 start-50 translate-middle-x text-center">
-                                <h1 style="color: whitesmoke; padding: 10px;">{{ noticia.titulo }}</h1>
-                            </div>
+                            <div class="cn-title position-absolute bottom-0 start-50 translate-middle-x text-center card-title">
+                              <h1>{{ noticia.titulo }}</h1>
+                          </div>                          
                         </a>
                     </div>
                   </div>

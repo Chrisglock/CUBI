@@ -1,0 +1,25 @@
+/* Estilos de .card-title */
+.card-title {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%; /* Ancho completo de la tarjeta */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Añade espacio entre las tarjetas */
+    transition: background-color 0.3s ease; /* Agrega una transición suave al fondo */
+}
+
+.card-title h5 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: black;
+    text-align: center; /* Centra el texto del título */
+}
+
+/* Estilos adicionales para las tarjetas (opcional) */
+.card {
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}

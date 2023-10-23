@@ -256,6 +256,7 @@ main{
         transition: all 300ms;
     }
 
+
     .menu nav ul{
         padding: 20px 0px;
         flex-direction: column;
@@ -265,7 +266,6 @@ main{
     .menu nav ul li{
         padding: 10px 40px;
     }
-
     .mostrar_menu{ /*CLASE MANIPULADA POR JS*/
         height: 235px;
     }
