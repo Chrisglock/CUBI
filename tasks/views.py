@@ -95,8 +95,14 @@ def create_task(request):
 
 @login_required
 def crear_noticia(request):
+    user_profile = PerfilUsuario.objects.get(user=request.user)
+    form = UserForm(instance=user_profile)
+    context = {
+       'form': form,
+       "form_not": NoticiaForm,
+   }
     if request.method == "GET":
-        return render(request, 'crear_noticia.html', {"form": NoticiaForm})
+        return render(request, 'crear_noticia.html', context)
     else:
         try:
             form = NoticiaForm(request.POST, request.FILES)
@@ -116,17 +122,9 @@ def registrar(request):
 
 def userhome(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
-    
-    if request.method == 'POST':
-        form = UserForm(request.POST, request.FILES, instance=user_profile)
-        if form.is_valid():
-            form.save()
-            return redirect('userhome')
-    else:
-        form = UserForm(instance=user_profile)
-
+    form = UserForm(instance=user_profile)
     context = {'form': form}
-    return render(request, 'userhome.html', context)
+    return render(request, 'userhome.html',context)
 
 @login_required
 def signout(request):
@@ -163,6 +161,7 @@ def task_detail(request, task_id):
 
 @login_required
 def noticia_detalle(request, id_noticias):
+    user_profile = PerfilUsuario.objects.get(user=request.user)
     if request.method == 'GET':
         noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user)
         form = NoticiaForm(instance=noticia)
