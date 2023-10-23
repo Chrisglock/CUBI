@@ -355,3 +355,22 @@ a{
 
 
 
+/* Agrega estas reglas a tu archivo estilos2.css */
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Ajusta estas reglas según tus necesidades */
+.btn__header-register {
+    padding: 14px 50px;
+    border: none;
+    background: #0176bc;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+}
