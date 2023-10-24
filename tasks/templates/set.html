@@ -1,41 +1,50 @@
-{%  extends "main.html" %}
-{% load static %}
+{% extends "main.html" %}
+
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-<style>
-	.imagen_perfil{
-		max-width: 200px;
-		max-height:200px;
-		margin: 0 auto;
-		border-radius: 50%;
-	}
-</style>
-
-<br>
-<div class="row">
-	<div class="col-md-3">
-		<div class="card card-body">
-			<a class="btn btn-warning" href="{% url 'userhome' %}"> &#8592; Back to Profile</a>
-			<hr>
-			<h3 style="text-align: center">Account Settings</h3>
-			<hr>
-			<img class="imagen_perfil" src="{{ form.instance.imagen_perfil.url }}">
-		
-		</div>
-	</div>
-	<div class="col-md-9">
-		<div class="card card-body">
-			
-			<form method="POST" action="" enctype="multipart/form-data">
-				{% csrf_token %}
-				{{form.as_p}}
-		
-			<input class="btn btn-primary" type="submit" name="Update Information">
-			</form>
-		</div>
-	</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <a class="btn btn-warning mb-3" href="{% url 'crear_noticia'%}">&#8592; Volver al Perfil</a>
+                    <hr>
+                    <h3 class="text-center">Editar Usuario</h3>
+                    <hr>
+                    <img class="imagen_perfil img-fluid" src="{{ form.instance.imagen_perfil.url }}" alt="Imagen de Perfil">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="groupsign" style=" margin: auto; align-items: center;">
+				<div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5" style=" margin: auto; align-items: center;">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            Nombre:{{ form.nombre}}
+                        </div>
+                        <div class="mb-3">
+                            Email:{{ form.email}}
+                        </div>
+                        <div class="mb-3">
+                            Descripcion:{{ form.descripcion }}
+                        </div>
+                        <div class="mb-3">
+                            Linkedin:{{ form.Linkedin  }}
+                        </div>
+                        <div class="mb-3">
+                            Imagen:{{ form.imagen_perfil }}
+                        </div>
+                        <button class="btn btn-primary" type="submit">Actualizar Informacion</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 
 {% endblock %}

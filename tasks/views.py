@@ -51,12 +51,11 @@ def set(request):
                 # Eliminar la imagen antigua del sistema de archivos
                 default_storage.delete(file_path)
             form.save()
-            return redirect('userhome')  # Redirigir a la página de inicio o a donde desees
+            return redirect('crear_noticia')  # Redirigir a la página de inicio o a donde desees
     else:
         form = UserForm(instance=user_profile)
-
-    context = {'form': form}
-    return render(request, 'set.html', context)
+        context = {'form': form}
+        return render(request, 'set.html', context)
 
 @login_required
 def tasks(request):
@@ -96,10 +95,9 @@ def create_task(request):
 @login_required
 def crear_noticia(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
-    form = UserForm(instance=user_profile)
     context = {
-       'form': form,
-       "form_not": NoticiaForm,
+       'user_profile': user_profile,
+       "form": NoticiaForm,
    }
     if request.method == "GET":
         return render(request, 'crear_noticia.html', context)
@@ -122,8 +120,7 @@ def registrar(request):
 
 def userhome(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
-    form = UserForm(instance=user_profile)
-    context = {'form': form}
+    context = {'user_profile': user_profile}
     return render(request, 'userhome.html',context)
 
 @login_required

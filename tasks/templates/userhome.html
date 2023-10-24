@@ -34,7 +34,8 @@
         </div>
         <div class="navbar-right">
             <div class="online">
-                <img src="{{ form.instance.imagen_perfil.url }}" class="nav-profile-img">
+                
+                <img src="{{ user_profile.imagen_perfil.url }}"  class="nav-profile-img">
             </div>
         </div>
  </nav>
@@ -47,14 +48,14 @@
     <div class="left-sidebar">
         <div class="sidebar-profile-box">
             <a href="/set">
-            <img src="{{ form.instance.imagen_perfil.url }}" width="100%">
+            <img src="{{ user_profile.imagen_perfil.url }}"  width="100%">
             </a>
             <div class="sidebar-profile-info">
             
                 <h1>{{ user.username }}</h1>
                 <h3>{{ user.email }}</h3>
                 <ul>
-                    <p>Probando: {{ form.instance.descripcion|linebreaks }}</p>
+                    <p>Probando: {{ user_profile.descripcion|linebreaks }}</p>
                 </ul>
             </div>
             <div class="sidebar-profile-link">
