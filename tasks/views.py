@@ -69,7 +69,8 @@ def noticias(request):
 
 @login_required
 def editar_noticias(request):
-    noticias = Noticia.objects.all()
+    noticias = Noticia.objects.filter(user=request.user)
+
     return render(request, 'editar_noticias.html', {"noticias": noticias})
 
 @login_required
