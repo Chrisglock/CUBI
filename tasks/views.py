@@ -9,6 +9,7 @@ from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTra
 from django.contrib.auth import password_validation
 from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario
 from django import forms
+from django.db.models import Q
 from django.core.files.storage import default_storage
 # Create your views here.
 
@@ -198,5 +199,24 @@ def borrar_noticia(request, id_noticias):
         return redirect('editar_noticias')
     
 def ver_noticia(request, id_noticias):
-    noticia = get_object_or_404(Noticia, id_noticias=id_noticias)
+    noticia = get_object_or_404(Noticia, id_noticias=id_noticias, tipo="Noticia")
     return render(request, 'ver_noticia.html', {'noticia': noticia})
+
+def publicacion(request):
+    noticias = Noticia.objects.all()
+    return render(request, 'publicacion.html', {"noticias": noticias})
+
+def ver_publicacion(request, id_noticias):
+    noticia = get_object_or_404(Noticia, id_noticias=id_noticias, tipo="Publicacion")
+    return render(request, 'ver_noticia.html', {'noticia': noticia})
+
+def buscar_noticias(request):
+    if 'q' in request.GET:
+        query = request.GET['q']
+        noticias = Noticia.objects.filter(Q(titulo__icontains=query))
+        return render(request, 'resultados_busqueda.html', {'noticias': noticias})
+    else:
+        return render(request, 'resultados_busqueda.html', {'noticias': []})
+
+def facil(request):
+    return render(request, 'facilities.html')

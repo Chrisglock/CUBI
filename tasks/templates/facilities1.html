@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estil.css' %}">
+    <title>UOH invest center</title>
+    <html lang="en">
+        
+<body>
+    <div class="content">
+        <h1>Kütral HPC</h1>
+        <h2>Last updated on May 7, 2023</h2>
+        <div>
+            <h1>Kütral (fire on mapudungun) computer cluster</h1>
+            <p> Kütral is a computer cluster at Di Genoma Lab that is a powerful computing infrastructure designed to support the analysis of large-scale genomics data. Kütral has a total of 1000 cores running at 2.2 GHz, 200TB of storage, and 7TB of RAM, all connected using InfiniBand at 40G/s. Kütral includes several specialized machines, including one with 1TB RAM and 88 cores that is specifically useful to tackle complex genome assembly tasks. In addition, there is a machine with 5000 GPUs that is employed to deploy machine learning models for data analysis. Most of Kütral’s computing resources are reserved for genomic analysis, including cancer genomics, genome assembly, and metagenomics.</p>
+    
+            <p>Kütral runs on the <a href="https://www.centos.org/" target="_blank">CentosOS 7</a> operating system. It uses the <a href="https://www.beegfs.io/c/" target="_blank">BeeGFS</a> parallel file system, which is widely regarded as one of the leading file systems for high-performance computing environments, to implement an ultra-fast, secure, and open-source storage solution. Kütral also includes the <a href="https://slurm.schedmd.com/" target="_blank">Slurm</a> workload manager, which provides a flexible and efficient framework for managing job scheduling and resource allocation. <a href="https://www.ansible.com/" target="_blank">Ansible</a>, a popular configuration management tool, is used to automate the setup and management of Kütral's software stack.</p>
+    
+            <p><a href="https://www.nextflow.io/" target="_blank">Nextflow</a>, a popular workflow management system, is installed on Kütral to help manage and automate complex computational pipelines. Nextflow is particularly well-suited for genomics data analysis and can help simplify managing large-scale data sets and processing pipelines. Additionally, the Di Genoma Lab has developed several Nextflow pipelines for genomic data processing (see software), which are all accessible and configurated to run at maximum speed on Kütral.</p>
+    
+            <p>Finally, Kütral includes the <a href="https://openondemand.org/" target="_blank">Open OnDemand</a> web platform, which provides a user-friendly interface for accessing Kütral's computing resources. Open OnDemand allows users to access Kütral's resources from any device with a web browser and provides a range of features to help manage data and run computational workflows.</p>
+    
+            <p>In summary, Kütral enables us to efficiently process and analyze large volumes of genomic data, ultimately accelerating our understanding of the genetic basis of diseases like cancer.</p>
+            
+            <img src="{% static "media/facili.jpeg" %}">
+        </div>
+    </div>
+
+
+
+
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+</body>
+{% endblock %}

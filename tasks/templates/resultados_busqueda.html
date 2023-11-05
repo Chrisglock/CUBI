@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/noticiasypublicacion.css' %}">
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
+
+<!-- CSS Libraries -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="lib/slick/slick.css" rel="stylesheet">
+<link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+     
+
+<h1 style="text-align:center;">Noticias</h1>
+
+<h2>Resultados de la búsqueda</h2>
+
+<ul>
+    {% for noticia in noticias %}
+        <li>
+            <div class="col-md-4 mb-3">
+                <div class="cn-img position-relative">
+                    {% if noticia.tipo == 'Noticia' %}
+                        <a href="{% url 'ver_noticia' noticia.id_noticias %}">
+                    {% elif noticia.tipo == 'Publicacion' %}
+                        <a href="{% url 'ver_publicacion' noticia.id_noticias %}">
+                    {% endif %}
+                        {% if noticia.imagen.url is not None %}
+                            <img src="{{ noticia.imagen.url }}" class="img-fluid blur-image" alt="Imagen de noticia" style="width: 350px; height: 255px;">
+                        {% endif %}
+                        <div class="cn-title position-absolute bottom-0 start-50 translate-middle-x text-center card-title">
+                            <h1 id="titulo_card">{{ noticia.titulo }}</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </li>
+    {% empty %}
+        <p>No se encontraron noticias.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

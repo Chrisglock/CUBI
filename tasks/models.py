@@ -29,6 +29,8 @@ class PerfilUsuario(models.Model):
     email = models.EmailField(null=True)
     descripcion = models.TextField(null=True)
     Linkedin = models.URLField(null=True, blank=True)
+    Twitter = models.URLField(null=True, blank=True)
+    Instagram = models.URLField(null=True, blank=True)
     alumno = models.BooleanField(null=True, default=False)
     imagen_perfil = models.ImageField(null=True,default="profile.png")
     admin = models.BooleanField(null=True, default=False)
@@ -55,6 +57,7 @@ class Noticia(models.Model):
     imagen = ImageField(upload_to='fotonoticias', blank=True)
     categoria = models.CharField(max_length=255, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tipo = models.CharField(max_length=255, default="Noticia", choices=[('Noticia', 'Noticia'), ('Publicacion', 'Publicación')])
     def __str__(self) -> str:
         return self.titulo
 # Modelo de Proyecto

@@ -40,16 +40,20 @@ class TaskForm(ModelForm):
         model = Task
         fields = ['title', 'description', 'important']
 
-class NoticiaForm(ModelForm):
+from django import forms
+from .models import Noticia
+
+class NoticiaForm(forms.ModelForm):
     class Meta:
         model = Noticia
-        fields = ['titulo','descripcion','imagen' ,'categoria']#'imagen','fecha_publicacion '
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super(NoticiaForm,self).__init__(*args, **kwargs)
+        fields = ['titulo', 'descripcion', 'imagen', 'categoria', 'tipo']
+    def __init__(self, *args, **kwargs):
+        super(NoticiaForm, self).__init__(*args, **kwargs)
         self.fields['titulo'].widget.attrs['class'] = 'form-control'
         self.fields['categoria'].widget.attrs['class'] = 'form-control'
         self.fields['descripcion'].widget.attrs['class'] = 'form-control'
         self.fields['imagen'].widget.attrs['class'] = 'form-control'
+        self.fields['tipo'].widget.attrs['class'] = 'form-control'
 
 
 class UserForm(ModelForm):
