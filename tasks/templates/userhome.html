@@ -59,10 +59,26 @@
                 </ul>
             </div>
             <div class="sidebar-profile-link">
-                <a ahref="#"><img src="{% static 'media/linkedin.png' %}" alt= "" ></a>
-                <a ahref="#"><img src="{% static 'media/twitter.png' %}" alt= "" ></a>
-                <a ahref="#"><img src="{% static 'media/instagram.png' %}" alt= "" ></a>
-                <a ahref="#"><img src="{% static 'media/youtube.png' %}" alt= "" ></a>
+                {% if user_profile.Linkedin %}
+                    <a href="{{ user_profile.Linkedin }}" target="_blank">
+                    <img src="{% static 'media/linkedin.png' %}" alt="LinkedIn">
+                    </a>
+                {% endif %}
+                {% if user_profile.Twitter %}
+                    <a href="{{ user_profile.Twitter }}" target="_blank">
+                    <img src="{% static 'media/twitter.png' %}" alt="Twitter">
+                    </a>
+                {% endif %}
+                {% if user_profile.Instagram %}
+                    <a href="{{ user_profile.Instagram }}" target="_blank">
+                    <img src="{% static 'media/instagram.png' %}" alt="Instagram">
+                    </a>
+                {% endif %}
+                {% if user_profile.Youtube %}
+                    <a href="{{ user_profile.Youtube }}" target="_blank">
+                    <img src="{% static 'media/youtube.png' %}" alt="YouTube">
+                    </a>
+                {% endif %}
             </div>
         </div>
         <div class="siderbar-activity">
