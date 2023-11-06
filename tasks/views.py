@@ -122,8 +122,9 @@ def registrar(request):
 
 def userhome(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
-    context = {'user_profile': user_profile}
-    return render(request, 'userhome.html',context)
+    noticias = Noticia.objects.order_by('-fecha_publicacion')[:5] 
+    context = {'user_profile': user_profile, 'noticias': noticias}
+    return render(request, 'userhome.html', context)
 
 @login_required
 def signout(request):
