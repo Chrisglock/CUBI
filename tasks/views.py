@@ -70,9 +70,16 @@ def noticias(request):
 
 @login_required
 def editar_noticias(request):
-    noticias = Noticia.objects.filter(user=request.user)
-
+    noticias = Noticia.objects.filter(user=request.user.id)
     return render(request, 'editar_noticias.html', {"noticias": noticias})
+
+#def ver_noticia(request, id_noticias):
+#    noticia = get_object_or_404(Noticia, id_noticias=id_noticias, tipo="Noticia")
+#    return render(request, 'ver_noticia.html', {'noticia': noticia})
+
+def user_public_view(request, id_user):
+    user = get_object_or_404(PerfilUsuario, user__id=id_user)
+    return render(request, 'user_public_view.html', {'user': user})
 
 @login_required
 def tasks_completed(request):
@@ -161,14 +168,14 @@ def task_detail(request, task_id):
 
 @login_required
 def noticia_detalle(request, id_noticias):
-    user_profile = PerfilUsuario.objects.get(user=request.user)
+    user_profile = PerfilUsuario.objects.get(user=request.user.id)
     if request.method == 'GET':
-        noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user)
+        noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user.id)
         form = NoticiaForm(instance=noticia)
         return render(request, 'noticia_detalle.html', {'noticia': noticia, 'form': form})
     else:
         try:
-            noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user)
+            noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user.id)
             form = NoticiaForm(request.POST,request.FILES, instance=noticia)
             print(request.FILES)
             form.save()
@@ -194,7 +201,7 @@ def delete_task(request, task_id):
     
 @login_required
 def borrar_noticia(request, id_noticias):
-    noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user)
+    noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user.id)
     if request.method == 'POST':
         noticia.delete()
         return redirect('editar_noticias')
@@ -221,3 +228,7 @@ def buscar_noticias(request):
 
 def facil(request):
     return render(request, 'facilities.html')
+def facil1(request):
+    return render(request, 'facilities1.html')
+def facil3(request):
+    return render(request, 'facilities3.html')

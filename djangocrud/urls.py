@@ -44,6 +44,9 @@ urlpatterns = [
     path('ver_publicación/<int:id_noticias>', views.ver_publicacion, name='ver_publicacion'),
     path('buscar_noticias/', views.buscar_noticias, name='buscar_noticias'),
     path('facilities/', views.facil, name='facilities'),
+    path('facilities1/', views.facil1, name='facilities1'),
+    path('facilities3/', views.facil3, name='facilities3'),
+    path('user_public_view/<int:id_user>', views.user_public_view, name='user_public_view'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos_public_view.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UOH invest center</title>
+
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{% if not user.is_authenticated %}
+ <nav class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="logo"><img src="{% static 'media/logo.jpg' %}" alt=""></a>
+
+            <div class="search-box">
+                <img src="{% static 'media/barra.png' %}">
+                <input type="text" placeholder="Buscar">
+            </div>
+            
+
+        </div>
+        <div class="navbar-center">
+            <ul>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/casa.png' %}"> <span style="padding-left: 7px;">Inicio</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/grupo.png' %}"> <span style="padding-left: 7px;">Equipo</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/maletin.png' %}"> <span style="padding-left: 7px;">Trabajos</span></a></li>
+                <li><a href="{% url 'editar_noticias'%}"class="activate-link"><img src="{% static 'media/periodico2.png' %}"> <span style="padding-left: 7px;">Editar Noticias</span></a></li>
+                <li><a href="#"class="activate-link"><img src="{% static 'media/notificacion.png' %}"> <span style="padding-left: 7px;">Notificaciones</span></a></li>             
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="online">
+                <img src="{{ user.imagen_perfil.url }}" class="nav-profile-img" onclick="toggleMenu()">
+            </div>
+        </div>
+<!--------menu de caida en perfil----------->
+
+<div class="profile-menu-wrap" id="profileMenu">
+    <div class="profile-menu">
+        <div class="user-info">
+            <img src="{{ user.imagen_perfil.url }}">
+            <div>
+                <h3>{{ user.nombre}}</h3>
+                <a href="#">Ver Perfil</a>
+            </div>
+        </div>
+        <hr>
+        <a href="#" class="profile-menu-link">
+            <img src="{% static 'media/feed.png' %}">
+            <p>Give Feedback</p>
+            <span>></span>
+        </a>
+        <a href="#" class="profile-menu-link">
+            <img src="{% static 'media/sett.png' %}">
+            <p>Configuracion y privacidad</p>
+            <span>></span>
+        </a>
+        <a href="#" class="profile-menu-link">
+            <img src="{% static 'media/help.png' %}">
+            <p>Ayuda y Soporte</p>
+            <span>></span>
+        </a>
+        <a href="#" class="profile-menu-link">
+            <img src="{% static 'media/logout.png' %}">
+            <p>Salir</p>
+            <span>></span>
+        </a>
+
+
+    </div>
+</div>
+
+
+ </nav>
+{% else %}
+    {% include '_navbar.html' %}
+{% endif %}      
+<!------------- aca se termina el navbar jaja ----------->
+
+<div class="container">
+    <div class="profile-main">
+        <div class="profile-container">
+            <img src="{% static 'media/logg.jpg' %}" width="100%">
+            <div class="profile-container-inner">
+                <img src="{{ user.imagen_perfil.url }}" class="profile-pic">
+                <h1>{{ user.nombre }}</h1>
+                <b>Investigador</b>
+                <p>Rancagua, Chile &middot; Informacion de contacto</p>
+                <p>
+                    <ul>
+                        <li>{{ user.email }}</li>
+                        <li>{{ user.Linkedin }}</li>
+                        <li>{{ user.Twitter }}</li>
+                        <li>{{ user.Instagram }}</li>
+                    </ul>
+                </p>
+                <!--
+                <div class="mutual-connection">
+                    <img src="{% static 'media/persona2.png' %}">
+                    <span>1 Amigo en común: Jose Garcia</span>
+                </div>
+                
+                <div class="profile-btn">
+                    <a href="#" class="primery-btn"><img src="{% static 'media/addus.png' %}">Conectar</a>
+                    <a href="#"><img src="{% static 'media/mess.png' %}">Mensaje</a>
+                </div>
+                -->
+            </div>
+        </div>
+
+        <div class="profile-description">
+            <h2>Sobre</h2>
+            <p>{{ user.descripcion }}</p>
+            <a href="#" class="see-more-link">Ver más...</a>
+        </div>
+
+        <div class="profile-description">
+            <h2>Noticias y Publicaciones</h2>
+            <div class="profile-desc-row">
+                <img src="{% static 'media/empresa.png' %}">
+                <div>
+                    <h3>Desarrollador Front-end</h3>
+                    <b>Virtual Minds &middot; Full-time</b>
+                    <b>Marzo 2023 - Actualidad &middot; 8 Meses</b>
+                    <p>Un ingeniero de computación es un profesional 
+                        multidisciplinar, cuyos conocimientos en los campos de la 
+                        tecnología y la innovación le permiten crear y gestionar 
+                        sistemas informáticos, manejando tanto software como hardware 
+                        en ámbitos tan distintos como el tecnológico o el administrativo.</p>
+                    <hr>
+                </div>
+            </div>
+            <!-- <a href="#" class="experience-link">Mostrar todas las experiencias<img src="{% static 'media/abajo_arr.png' %}" alt=""></a> -->
+
+
+
+        </div>
+
+
+
+    </div>
+<!-------------perfil slidebar------------------->
+    <div class="profile-sidebar"></div>
+</div>
+
+
+
+
+
+
+
+<script>
+    let profileMenu = document.getElementById("profileMenu");
+
+    function toggleMenu(){
+        profileMenu.classList.toggle("open-menu");
+    }
+</script>
+
+</body>
+</html>
