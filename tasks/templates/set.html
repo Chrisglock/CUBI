@@ -7,7 +7,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <div class="container mt-5">
-    <div class="row">
+    <div class="row" style="margin-top: 40px;">
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-9">
             <div class="groupsign" style=" margin: auto; align-items: center;">
-				<div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5" style="width: 40%; margin: auto;">
+				<div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5" style="width: 60%; margin: auto;">
                     <form method="POST" action="" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="miq">
@@ -39,7 +39,7 @@
                         <div class="miq">
                             Imagen:{{ form.imagen_perfil }}
                         </div>
-                        <button class="btn btn-primary" type="submit">Actualizar Informacion</button>
+                        <button class="btn btn-primary" type="submit"style="margin-top: 20px;">Actualizar Informacion</button>
                     </form>
                 </div>
             </div>

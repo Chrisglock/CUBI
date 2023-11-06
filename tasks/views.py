@@ -50,7 +50,6 @@ def set(request):
                 # Guardar la ruta del archivo a eliminar
                 file_path = user_profile.imagen_perfil.path
                 # Eliminar la imagen antigua del sistema de archivos
-                default_storage.delete(file_path)
             form.save()
             return redirect('crear_noticia')  # Redirigir a la página de inicio o a donde desees
     else:
@@ -221,3 +220,6 @@ def buscar_noticias(request):
 
 def facil(request):
     return render(request, 'facilities.html')
+
+def cont(request):
+    return render(request, 'contacto.html')
