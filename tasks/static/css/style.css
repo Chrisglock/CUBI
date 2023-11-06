@@ -59,7 +59,7 @@ input[type=text], select, textarea {
   }
   
   /* Add a background color and some padding around the form */
-  .container {
+  .cont {
     background-color: #f2f2f2;
     padding: 20px;
     max-width: 900px;

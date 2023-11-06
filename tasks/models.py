@@ -56,7 +56,7 @@ class Noticia(models.Model):
     fecha_publicacion =  models.DateTimeField(default=timezone.now)
     imagen = ImageField(upload_to='fotonoticias', blank=True)
     categoria = models.CharField(max_length=255, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(PerfilUsuario, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=255, default="Noticia", choices=[('Noticia', 'Noticia'), ('Publicacion', 'Publicación')])
     def __str__(self) -> str:
         return self.titulo

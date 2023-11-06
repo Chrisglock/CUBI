@@ -29,7 +29,18 @@
                 {% if noticia.categoria %}
                     <p><strong>Categoría: </strong>{{ noticia.categoria }}</p>
                 {% endif %}
-                <p><strong>Autor: </strong>{{ noticia.user.username }}</p>
+                    <div class="card">
+                        <a href="{% url 'user_public_view' noticia.user.id %}">
+                        <img src="{{ noticia.user.imagen_perfil.url }}" alt="Avatar" style="width:25%">
+                    </a>
+                        <div class="container">
+                          <h4><b>{{ noticia.user.username }}</b></h4> 
+                          
+                          <div><p>{{noticia.user.descripcion}}</p> </div>
+                        </div>
+                      </div>
+                </a>
+                
             </div>
         </div>
     </div>
