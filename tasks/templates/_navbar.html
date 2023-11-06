@@ -7,6 +7,7 @@
     <title>UOH invest center</title>
     {% load static %}
         <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+        <link rel="stylesheet" href="{% static 'css/estilos2.css' %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
         <script src="{% static 'js/script.js'%}"></script>
         <script src="{% static 'js/font.js'%}"></script>
@@ -32,10 +33,12 @@
                         <li><a href="#">Equipo</a></li>
                         <li><a href="#">Contacto</a></li>
                         <li>
-                            <form method="GET" action="{% url 'buscar_noticias' %}">
-                                <input type="text" name="q" placeholder="Buscar noticias">
-                                <input type="submit" value="Buscar">
+                            <div class="search-box">
+                                <img src="{% static 'media/barra.png' %}">
+                                <form method="GET" action="{% url 'buscar_noticias' %}">
+                                    <input type="text" name="q" placeholder="Buscar">
                             </form>
+                            </div>
                         </li>
                     </ul>
                 </nav>
