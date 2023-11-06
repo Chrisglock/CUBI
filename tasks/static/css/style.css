@@ -1,0 +1,32 @@
+
+
+.box {
+    width: 150px;
+    height: 10px;
+    background-color: rgb(252, 252, 252);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid black; 
+}
+
+.box > i {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+.box > input {
+    height: 40px;
+    width: 100px; 
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding-left: 8px;
+    background: transparent;
+    color: rgb(0, 0, 0);
+}
+
+.box > input::placeholder {
+    color: white; 
+}
