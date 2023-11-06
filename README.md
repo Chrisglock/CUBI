@@ -1,5 +1,5 @@
 # CUBI
-¡Bienvenido al repositorio oficial del proyecto "CUBI" del Centro de Bioingeniería (UOH) ubicado en Rancagua, Chile! Somos un centro de investigación interdisciplinario dedicado a avanzar en la comprensión del cáncer en pacientes chilenos mediante tecnologías genómicas de vanguardia, técnicas de imagen avanzada, algoritmos y métodos experimentales innovadores.
+¡Bienvenido al repositorio oficial del proyecto "CUBI" para el Centro de Bioingeniería (UOH) ubicado en Rancagua, Chile! Somos un centro de investigación interdisciplinario dedicado a avanzar en la comprensión del cáncer en pacientes chilenos mediante tecnologías genómicas de vanguardia, técnicas de imagen avanzada, algoritmos y métodos experimentales innovadores.
 
 Sobre "CUBI":
 
