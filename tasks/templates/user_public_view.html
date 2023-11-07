@@ -91,20 +91,22 @@
                 <h1>{{ user.nombre }}</h1>
                 <b>Investigador</b>
                 <p>Rancagua, Chile &middot; Informacion de contacto</p>
-                <p>
-                    <ul>
-                        <li>{{ user.email }}</li>
-                        {% if user.Linkedin %}
-                            <li>{{ user.Linkedin }}</li>
-                        {% endif %}
-                        {% if user.Twitter  %}
-                            <li>{{ user.Twitter  }}</li>
-                        {% endif %}
-                        {% if user.Instagram %}
-                            <li>{{ user.Instagram }}</li>
-                        {% endif %}
-                    </ul>
-                </p>
+                    {% if user.Linkedin %}
+                        <a href="{{ user.Linkedin }}" target="_blank">
+                        <img src="{% static 'media/linkedin.png' %}" alt="LinkedIn" width="24">
+                        </a>
+                    {% endif %}
+                    {% if user.Twitter %}
+                        <a href="{{ user.Twitter }}" target="_blank">
+                        <img src="{% static 'media/twitter.png' %}" alt="Twitter" width="24">
+                        </a>
+                    {% endif %}
+                    {% if user.Instagram %}
+                        <a href="{{ user.Instagram }}" target="_blank">
+                        <img src="{% static 'media/instagram.png' %}" alt="Instagram" width="24">
+                        </a>
+                    {% endif %}
+                
                 <!--
                 <div class="mutual-connection">
                     <img src="{% static 'media/persona2.png' %}">
