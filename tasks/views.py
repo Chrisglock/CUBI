@@ -113,7 +113,7 @@ def crear_noticia(request):
         try:
             form = NoticiaForm(request.POST, request.FILES)
             new_task = form.save(commit=False)
-            new_task.user = request.user
+            new_task.user = user_profile
             new_task.save()
             return redirect('crear_noticia')
         except ValueError:
