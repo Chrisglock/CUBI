@@ -32,6 +32,7 @@
                         <li><a href="{% url 'publicacion'%}">Publicaciones</a></li>
                         <li><a href="#">Equipo</a></li>
                         <li><a href="#">Contacto</a></li>
+                        {% if url.name == "signup" %}
                         <li>
                             <form method="GET" action="{% url 'buscar_noticias' %}">
                                 <div class="box">
@@ -45,6 +46,7 @@
                                     </script>
                             </form>
                         </li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>

@@ -22,25 +22,32 @@
             <div class="col-md-8 offset-md-2">
                 <h1>{{ noticia.titulo }}</h1>
                 <p class="text-muted">{{ noticia.fecha_publicacion|date:"F d, Y" }}</p>
+                {% if noticia.categoria %}
+                    <p><strong>Categoría: </strong>{{ noticia.categoria }}</p>
+                {% endif %}
                 {% if noticia.imagen %}
                     <img src="{{ noticia.imagen.url }}" class="img-fluid noticia-banner mb-3" alt="{{ noticia.titulo }}">
                 {% endif %}
                 <p>{{ noticia.descripcion|safe }}</p>
-                {% if noticia.categoria %}
-                    <p><strong>Categoría: </strong>{{ noticia.categoria }}</p>
-                {% endif %}
-                    <div class="card">
-                        <a href="{% url 'user_public_view' noticia.user.id %}">
-                        <img src="{{ noticia.user.imagen_perfil.url }}" alt="Avatar" style="width:25%">
-                    </a>
-                        <div class="container">
-                          <h4><b>{{ noticia.user.username }}</b></h4> 
-                          
-                          <div><p>{{noticia.user.descripcion}}</p> </div>
+                <p><strong>Autor:</strong></p>
+                <div class="card mb-3" style="max-width: 100%;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{ noticia.user.imagen_perfil.url }}" class="img-fluid rounded-start" alt="imagen de perfil no encontrada">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ noticia.user.nombre }}</h5>
+                          <p class="card-text">{{ noticia.user.descripcion }}</p>
+                          <div class="text-center">
+                            <a href="{% url 'user_public_view' noticia.user.id %}" class="btn btn-primary center">Ir al perfil</a>
+                          </div>
                         </div>
                       </div>
-                </a>
-                
+                    </div>
+                  </div>
+
+
             </div>
         </div>
     </div>
