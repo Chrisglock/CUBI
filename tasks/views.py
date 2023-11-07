@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo
+from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo,TeamMember
 from django.contrib.auth import password_validation
 from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario
 from django import forms
@@ -233,6 +233,10 @@ def facil1(request):
 
 def facil3(request):
     return render(request, 'facilities3.html')
+
+def team_view(request):
+    team_members = TeamMember.objects.all()
+    return render(request, 'team.html', {'team_members': team_members})
 
 def cont(request):
     return render(request, 'contacto.html')

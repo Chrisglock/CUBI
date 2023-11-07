@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,12 +27,28 @@
             <div class="menu">
                 <nav>
                     <ul>
-                        <li><a href="{% url 'facilities'%}">Facilities</a></li>
+                        <!------------------->
+                        <li>
+                            <div class="dropdown">
+                                <a href="#">Facilities</a>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'facilities1' %}">Cluster</a>
+                                    <a href="{% url 'facilities' %}">Sequencing</a>
+                                    <a href="{% url 'facilities3' %}">Software</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!------------------->
                         <li><a href="{% url 'noticias'%}">Noticias</a></li>
                         <li><a href="{% url 'publicacion'%}">Publicaciones</a></li>
+<<<<<<< HEAD
                         <li><a href="#">Equipo</a></li>
                         <li><a href="{% url 'contacto'%}">Contacto</a></li>
                         {% if url.name == "signup" %}
+=======
+                        <li><a href="{% url 'equipo'%}">Equipo</a></li>
+                        <li><a href="#">Contacto</a></li>
+>>>>>>> 450d6092578dcde951e753809522ae0aa8711e66
                         <li>
                             <form method="GET" action="{% url 'buscar_noticias' %}">
                                 <div class="box">
@@ -46,7 +62,6 @@
                                     </script>
                             </form>
                         </li>
-                        {% endif %}
                     </ul>
                 </nav>
             </div>

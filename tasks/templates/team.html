@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Equipo de la Universidad</h1>
+    <div class="team-members">
+        {% for member in team_members %}
+            <div class="team-member">
+                <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                <h2>{{ member.name }}</h2>
+                <p>Estudio: {{ member.study }}</p>
+                <p>Rol: {% if member.is_internal %}Interno{% else %}Externo{% endif %}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
