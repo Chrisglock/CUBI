@@ -79,7 +79,8 @@ def editar_noticias(request):
 
 def user_public_view(request, id_user):
     user = get_object_or_404(PerfilUsuario, user__id=id_user)
-    return render(request, 'user_public_view.html', {'user': user})
+    noticias = Noticia.objects.filter(user=id_user)
+    return render(request, 'user_public_view.html', {'user': user , 'noticias': noticias})
 
 @login_required
 def tasks_completed(request):
