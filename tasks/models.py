@@ -115,3 +115,12 @@ class Task(models.Model):
   
   def __str__(self):
     return self.title + ' - ' + self.user.username
+  
+class TeamMember(models.Model):
+    name = models.CharField(max_length=100)
+    study = models.CharField(max_length=100)
+    is_internal = models.BooleanField()
+    image = models.ImageField(upload_to='team_members/', blank=True)
+
+    def __str__(self):
+        return self.name

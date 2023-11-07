@@ -27,12 +27,22 @@
             <div class="menu">
                 <nav>
                     <ul>
-                        <li><a href="{% url 'facilities'%}">Facilities</a></li>
+                        <!------------------->
+                        <li>
+                            <div class="dropdown">
+                                <a href="#">Facilities</a>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'facilities1' %}">Cluster</a>
+                                    <a href="{% url 'facilities' %}">Sequencing</a>
+                                    <a href="{% url 'facilities3' %}">Software</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!------------------->
                         <li><a href="{% url 'noticias'%}">Noticias</a></li>
                         <li><a href="{% url 'publicacion'%}">Publicaciones</a></li>
-                        <li><a href="#">Equipo</a></li>
+                        <li><a href="{% url 'equipo'%}">Equipo</a></li>
                         <li><a href="#">Contacto</a></li>
-                        {% if url.name == "signup" %}
                         <li>
                             <form method="GET" action="{% url 'buscar_noticias' %}">
                                 <div class="box">
@@ -46,7 +56,6 @@
                                     </script>
                             </form>
                         </li>
-                        {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -69,7 +78,7 @@
                     {% if request.path == '/signin/'%}
                     <a href="/signup" class="btn__header-register">Registrarse</a>
                     {% elif request.path == '/signup/'  or request.path == '/' %}
-                    <a href="/signin" class="btn__header-register">Iniciar sesión</a>
+                    <a href="/signin" class="btn__header-register">Iniciar sesiÃ³n</a>
                     {% endif %}
                 </div>
             {% endif %}
