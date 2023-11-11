@@ -91,14 +91,22 @@
                 <h1>{{ user.nombre }}</h1>
                 <b>Investigador</b>
                 <p>Rancagua, Chile &middot; Informacion de contacto</p>
-                <p>
-                    <ul>
-                        <li>{{ user.email }}</li>
-                        <li>{{ user.Linkedin }}</li>
-                        <li>{{ user.Twitter }}</li>
-                        <li>{{ user.Instagram }}</li>
-                    </ul>
-                </p>
+                    {% if user.Linkedin %}
+                        <a href="{{ user.Linkedin }}" target="_blank">
+                        <img src="{% static 'media/linkedin.png' %}" alt="LinkedIn" width="24">
+                        </a>
+                    {% endif %}
+                    {% if user.Twitter %}
+                        <a href="{{ user.Twitter }}" target="_blank">
+                        <img src="{% static 'media/twitter.png' %}" alt="Twitter" width="24">
+                        </a>
+                    {% endif %}
+                    {% if user.Instagram %}
+                        <a href="{{ user.Instagram }}" target="_blank">
+                        <img src="{% static 'media/instagram.png' %}" alt="Instagram" width="24">
+                        </a>
+                    {% endif %}
+                
                 <!--
                 <div class="mutual-connection">
                     <img src="{% static 'media/persona2.png' %}">
@@ -121,20 +129,20 @@
 
         <div class="profile-description">
             <h2>Noticias y Publicaciones</h2>
-            <div class="profile-desc-row">
-                <img src="{% static 'media/empresa.png' %}">
-                <div>
-                    <h3>Desarrollador Front-end</h3>
-                    <b>Virtual Minds &middot; Full-time</b>
-                    <b>Marzo 2023 - Actualidad &middot; 8 Meses</b>
-                    <p>Un ingeniero de computación es un profesional 
-                        multidisciplinar, cuyos conocimientos en los campos de la 
-                        tecnología y la innovación le permiten crear y gestionar 
-                        sistemas informáticos, manejando tanto software como hardware 
-                        en ámbitos tan distintos como el tecnológico o el administrativo.</p>
-                    <hr>
+            {% for noticia in noticias %}
+            <a href="{% url 'ver_noticia' noticia.id_noticias %}" style="text-decoration:none; color: inherit;" >
+                <div class="profile-desc-row">
+                    <img src="{% static 'media/empresa.png' %}">
+                    <div>
+                        <h3>{{ noticia.titulo }}</h3>
+                        <b>CUBI</b>
+                        <b>{{ noticia.fecha_publicacion|date:"F d, Y" }}</b>
+                        <p>{{ noticia.descripcion|safe|linebreaks|slice:":90"}}...</p>
+                        <hr>
+                    </div>
                 </div>
-            </div>
+            </a>
+            {% endfor%}
             <!-- <a href="#" class="experience-link">Mostrar todas las experiencias<img src="{% static 'media/abajo_arr.png' %}" alt=""></a> -->
 
 
