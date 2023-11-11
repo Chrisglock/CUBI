@@ -41,13 +41,17 @@
                         <!------------------->
                         <li><a href="{% url 'noticias'%}">Noticias</a></li>
                         <li><a href="{% url 'publicacion'%}">Publicaciones</a></li>
-                        <li><a href="/">Equipo</a></li>
+
+                        <li><a href="#">Equipo</a></li>
+                        <li><a href="{% url 'contacto'%}">Contacto</a></li>
+                        {% if url.name == "signup" %}
+                        <li><a href="{% url 'equipo'%}">Equipo</a></li>
                         <li><a href="#">Contacto</a></li>
                         <li>
                             <form method="GET" action="{% url 'buscar_noticias' %}">
                                 <div class="box">
                                         <i class="fa fa-search" id="search-icon" aria-hidden="true" style="cursor: pointer;"></i>
-                                        <input type="text" id="search-input" name="q" placeholder="" style="border: none; outline: none; font-size: 14px; padding-left: 8px; background: transparent;">
+                                        <input type="text" id="search-input" name="q" placeholder="" style="border: none; outline: none; font-size: 14px; padding-left: 8px;  margin-top: 15px; background: transparent;">
                                     </div>
                                     <script>
                                         document.getElementById("search-icon").addEventListener("click", function () {
