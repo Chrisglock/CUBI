@@ -7,10 +7,11 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo,TeamMember
 from django.contrib.auth import password_validation
-from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario
+from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario,ContactForm
 from django import forms
 from django.db.models import Q
 from django.core.files.storage import default_storage
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -237,3 +238,37 @@ def facil3(request):
 def team_view(request):
     team_members = TeamMember.objects.all()
     return render(request, 'team.html', {'team_members': team_members})
+
+def equipo(request):
+    team_members = PerfilUsuario.objects.all()
+    return render(request, 'equipo.html', {'team_members': team_members})
+
+
+def contacto_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Procesa los datos del formulario
+            fullname = form.cleaned_data['fullname']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            affair = form.cleaned_data['affair']
+            message = form.cleaned_data['message']
+
+            # Construye el cuerpo del correo
+            email_body = f"Nombre: {fullname}\nCorreo electrónico: {email}\nTeléfono: {phone}\n{message}"
+
+            # Envía el correo electrónico
+            send_mail(
+                affair,
+                email_body,
+                email,  # Reemplaza con tu dirección de correo
+                ['investigacion.cubi@gmail.com'],  # Reemplaza con la dirección del destinatario
+                fail_silently=False,
+            )
+            form = ContactForm()
+
+    else:
+        form = ContactForm()
+
+    return render(request, 'contacto.html', {'form': form})

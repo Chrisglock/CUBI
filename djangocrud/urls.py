@@ -47,7 +47,8 @@ urlpatterns = [
     path('facilities1/', views.facil1, name='facilities1'),
     path('facilities3/', views.facil3, name='facilities3'),
     path('user_public_view/<int:id_user>', views.user_public_view, name='user_public_view'),
-    path('equipo/', views.team_view, name='equipo'),
+    path('equipo/', views.equipo, name='equipo'),
+    path('contacto/', views.contacto_view, name='contacto'),
 ]
 
 if settings.DEBUG:

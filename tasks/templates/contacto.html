@@ -1,30 +1,49 @@
-{% extends 'base.html' %} {% block content %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Contacto</title>
-    <html lang="en">
+    <title>UOH invest center</title>
 
-    <div class="cont mt-5"style="margin-top: 40px;">
-        <div class="shadow p-4 mb-5 bg-body rounded d-flex mt-5" style="width: 80%; margin: auto;">
-            <form action="action_page.php">
-          
-              <label for="fname">Nombre</label>
-              <input type="text" id="fname" name="Nombre" placeholder="">
-          
-              <label for="lname">Apellido</label>
-              <input type="text" id="lname" name="Apellido" placeholder="">
-          
-          
-              <label for="subject">Asunto</label>
-              <textarea id="subject" name="Asunto" placeholder="" style="height:200px"></textarea>
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 
-              <input type="submit" value="Enviar">
-          
-              <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=60%25&amp;height=600&amp;hl=en&amp;q=Rancagua,Universidad%20de%20O'Higgins+(Universidad%20de%20O'Higgins)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Calculate population in area</a></iframe></div>
-            </form>
-          </div>
+    <link rel="stylesheet" href="{% static 'css/estilloscontactoequipo.css'%}">
+</head>
+<body>
+    {% include '_navbar.html' %}
+    
+        <div class="content" style="max-width: 75%;margin: 0 auto;">
+    
+            <h1 class="logo4">Comunicate con <span>nosotros</span></h1>
+    
+            <div class="contact-wrapper animated bounceInUp">
+                <div class="contact-form">
+                    
+                    <form method="post" action="{% url 'contacto' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <p class="block"><button type="submit">Enviar</button> </p>
+                        
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h4>Mas información</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Avenida Libertador Bernardo O'Higgins</li>
+                        <li><i class="fas fa-envelope-open-text"></i> alex.digenova@uoh.cl</li>
+                    </ul>
+                    <p>cubi.cl</p>
+                </div>
+            </div>
+    
         </div>
-          {% endblock %}
+    
+    </body>
+
+
+
+
+    <script src="js/script.js"></script>
+</html>

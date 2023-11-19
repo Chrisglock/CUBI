@@ -41,8 +41,8 @@
                         <!------------------->
                         <li><a href="{% url 'noticias'%}">Noticias</a></li>
                         <li><a href="{% url 'publicacion'%}">Publicaciones</a></li>
-                        <li><a href="/">Equipo</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="{% url 'equipo' %}">Equipo</a></li>
+                        <li><a href="{% url 'contacto' %}">Contacto</a></li>
                         <li>
                             <form method="GET" action="{% url 'buscar_noticias' %}">
                                 <div class="box">
@@ -69,7 +69,7 @@
                     <div class="navbar-right">
                         <div class="online">
                             <a href="{% url 'crear_noticia'%}">
-                                <img src="{% static 'media/profile.png' %}" class="nav-profile-img">
+                                <img src="{{ request.user_profile.imagen_perfil.url }}" class="nav-profile-img">
                             </a>
                         </div>
                     </div>

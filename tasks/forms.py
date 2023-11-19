@@ -62,7 +62,12 @@ class UserForm(ModelForm):
 		fields = '__all__'
 		exclude = ['user',"alumno","admin",]
 
-        
+class ContactForm(forms.Form):
+    fullname = forms.CharField(label='Nombre completo', max_length=100)
+    email = forms.EmailField(label='Correo electrónico')
+    phone = forms.CharField(label='Número de teléfono', max_length=20)
+    affair = forms.CharField(label='Asunto', max_length=100)
+    message = forms.CharField(label='Mensaje', widget=forms.Textarea)      
 
 #class DescForm(ModelForm):
  #   class Meta:

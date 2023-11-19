@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'tasks.middleware.UserProfileMiddleware',
 ]
 
 ROOT_URLCONF = 'djangocrud.urls'
@@ -144,7 +145,7 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Flash', 'Table', 'HorizontalRule'],
             ['TextColor', 'BGColor'],
-            ['Smiley', 'SpecialChar'], ['Source'],
+            ['SpecialChar'], ['Source'],
             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
             ['NumberedList','BulletedList'],
             ['Indent','Outdent'],
@@ -153,3 +154,13 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': 'justify,liststyle,indent',
    },
 }
+
+# contacto
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'investigacion.cubi@gmail.com'
+EMAIL_HOST_PASSWORD = 'wbou agee ppej wpaj'
+#DEFAULT_FROM_EMAIL = 'investigacion.cubi@gmail.com'
