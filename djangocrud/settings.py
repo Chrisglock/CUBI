@@ -162,5 +162,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'investigacion.cubi@gmail.com'
-EMAIL_HOST_PASSWORD = 'wbou agee ppej wpaj'
+EMAIL_HOST_PASSWORD = ''
 #DEFAULT_FROM_EMAIL = 'investigacion.cubi@gmail.com'
