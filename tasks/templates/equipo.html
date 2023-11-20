@@ -35,9 +35,11 @@
             {% if member.nombre %}
             <div class="column3">
               <div class="card">
+                <a href="{% url 'user_public_view' member.user.id %}">
                 <div class="img-container">
-                  <img src="{{ member.imagen_perfil.url }}" />
+                    <img src="{{ member.imagen_perfil.url }}" />
                 </div>
+                </a>
                 <h3>{{ member.nombre }}</h3>
                 <p>Colaborador</p>
                 <div class="icons3">
@@ -56,10 +58,10 @@
                     <i class="fab fa-github"></i>
                   </a>
                   -->
-                  {% if member.Twitter %}
-                  <a href="{{member.email}}">
-                    <i class="fas fa-envelope"></i>
-                  </a>
+                  {% if member.email %}
+                    <a href="mailto:{{member.email}}">
+                      <i class="fas fa-envelope"></i>
+                    </a>
                   {% endif%}
                 </div>
               </div>
