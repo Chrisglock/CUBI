@@ -14,36 +14,36 @@
 <body>
     {% include '_navbar.html' %}
     
-        <div class="content" style="max-width: 75%;margin: 0 auto;">
-    
-            <h1 class="logo4">Comunicate con <span>nosotros</span></h1>
-    
-            <div class="contact-wrapper animated bounceInUp">
-                <div class="contact-form">
-                    
-                    <form method="post" action="{% url 'contacto' %}">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <p class="block"><button type="submit">Enviar</button> </p>
-                        
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h4>Mas información</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Avenida Libertador Bernardo O'Higgins</li>
-                        <li><i class="fas fa-envelope-open-text"></i> alex.digenova@uoh.cl</li>
-                    </ul>
-                    <p>cubi.cl</p>
+    <div class="content" style="max-width: 75%; margin: 0 auto;">
+        <h1 class="logo4">Comunicate con <span>nosotros</span></h1>
+        <div class="contact-wrapper animated bounceInUp">
+            <div class="contact-form">
+                <form method="post" action="{% url 'contacto' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <p class="block"><button type="submit">Enviar</button> </p>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h4>Mas información</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Avenida Libertador Bernardo O'Higgins</li>
+                    <li><i class="fas fa-envelope-open-text"></i> alex.digenova@uoh.cl</li>
+                </ul>
+                <p>cubi.cl</p>
+            </div>
+        </div>
+        <footer>
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe src="https://maps.google.com/maps?q=Universidad%20de%20O'Higgins&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" style="width: 100%; height: 400px;"></iframe>
                 </div>
             </div>
-    
-        </div>
-    
-    </body>
-
+        </footer>
+    </div>
 
 
 
     <script src="js/script.js"></script>
+</body>
 </html>
