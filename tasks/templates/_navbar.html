@@ -76,9 +76,17 @@
             {% else %}
                 <div class="header__register">
                     {% if request.path == '/signin/'%}
-                    <a href="/signup" class="btn__header-register">Registrarse</a>
-                    {% elif request.path == '/signup/'  or request.path == '/' %}
-                    <a href="/signin" class="btn__header-register">Iniciar sesión</a>
+                    <div class="nav-link header__register">
+                        <a href="/signup">
+                            <input type="button" class="btn__header-register" value="Registrarse">
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="nav-link header__register">
+                        <a href="/signin">
+                            <input type="button" class="btn__header-register" value="Iniciar sesión">
+                        </a>
+                    </div>
                     {% endif %}
                 </div>
             {% endif %}

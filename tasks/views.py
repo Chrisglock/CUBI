@@ -292,14 +292,17 @@ def contacto_view(request):
             email_body = f"Nombre: {fullname}\nCorreo electrónico: {email}\nTeléfono: {phone}\n{message}"
 
             # Envía el correo electrónico
-            send_mail(
-                affair,
-                email_body,
-                email,  # Reemplaza con tu dirección de correo
-                ['investigacion.cubi@gmail.com'],  # Reemplaza con la dirección del destinatario
-                fail_silently=False,
-            )
-            form = ContactForm()
+            try:
+                send_mail(
+                    affair,
+                    email_body,
+                    email,  # Reemplaza con tu dirección de correo
+                    ['investigacion.cubi@gmail.com'],  # Reemplaza con la dirección del destinatario
+                    fail_silently=False,
+                )
+                form = ContactForm()
+            except:
+                print("error en mandar mail")
 
     else:
         form = ContactForm()
