@@ -2,6 +2,7 @@
 {% load static %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <link rel="stylesheet" href="{% static 'css/noticiasypublicacion.css' %}">
+    <link rel="stylesheet" href="{% static 'css/noticiasypublicacioncopy.css' %}">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
@@ -22,20 +23,47 @@
 <!-- Category News Start-->
 <div class="cat-news">
   <div class="container">
-      <div class="row">
           <div class="col-md-12 p-2">
-              <div class="row justify-content-between">
                   {% for noticia in noticias %}
-                  <div class="col-md-4 mb-3">
                     <div class="cn-img position-relative">
-                        <a href="{% url 'noticia_detalle' noticia.id_noticias %}">
-                            {% if noticia.imagen.url is not None %}
-                                <img src="{{ noticia.imagen.url }}" class="img-fluid blur-image" alt="Imagen de noticia" style="width: 350px; height: 255px;">
+                        {% if noticia.tipo == 'Noticia' %}
+                            <div class="cardproj-container">
+                              <a href="{% url 'noticia_detalle' noticia.id_noticias %}">
+                              <div class="cardproj cardproj-blue">
+                                <div class="cardproj-innerbox">
+                                  <img class="cardproj-img" src="{{ noticia.imagen.url }}" />
+                                  <div class="cardproj-textbox">
+                                    <div class="cardproj-title">{{ noticia.titulo }}</div>
+                                    <div class="cardproj-subtitle">Abstract</div>
+                                    <div class="cardproj-description">{{ noticia.descripcion|slice:":260"|safe }}</div>
+                                    <div class="cardproj-tagbox">
+                                      <span class="cardproj-tag">HTML</span>
+                                      <span class="cardproj-tag">CSS</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                              </div>
+                            {% elif noticia.tipo == 'Publicacion' %}
+                                <a href="{% url 'noticia_detallepub' noticia.id_noticias %}">
+                                    <div class="projcard-container">
+                                        <div class="projcard projcard-blue">
+                                            <div class="projcard-innerbox">
+                                                <div class="projcard-textbox">
+                                                    <div class="projcard-title">{{ noticia.titulo }}</div>
+                                                    <div class="projcard-subtitle">Abstract</div>
+                                                    <div class="projcard-bar"></div>
+                                                    <div class="projcard-description">{{ noticia.descripcion|slice:":260"|safe }}</div>
+                                                    <div class="projcard-tagbox">
+                                                        <span class="projcard-tag">HTML</span>
+                                                        <span class="projcard-tag">CSS</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </a>
                             {% endif %}
-                            <div class="cn-title position-absolute bottom-0 start-50 translate-middle-x text-center card-title">
-                              <h1 id="titulo_card">{{ noticia.titulo }}</h1>
-                          </div>                          
-                        </a>
                     </div>
                   </div>
                   {% endfor %}

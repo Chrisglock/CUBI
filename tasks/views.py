@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task,Usuario, Post, Noticia, Proyecto, Institucion, BolsaTrabajoPost, AplicacionBolsaTrabajo,TeamMember
 from django.contrib.auth import password_validation
-from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario,ContactForm
+from .forms import TaskForm,RegisterUserForm,LoginUserForm,NoticiaForm,UserForm,PerfilUsuario,ContactForm,PubForm
 from django import forms
 from django.db.models import Q
 from django.core.files.storage import default_storage
@@ -50,8 +50,6 @@ def set(request):
             if user_profile.imagen_perfil:
                 # Guardar la ruta del archivo a eliminar
                 file_path = user_profile.imagen_perfil.path
-                # Eliminar la imagen antigua del sistema de archivos
-                default_storage.delete(file_path)
             form.save()
             return redirect('crear_noticia')  # Redirigir a la página de inicio o a donde desees
     else:
@@ -122,6 +120,24 @@ def crear_noticia(request):
         except ValueError:
             return render(request, 'crear_noticia.html', {"form": NoticiaForm, "error": "Error al publicar noticias."})
 
+@login_required
+def crear_publicacion(request):
+    user_profile = PerfilUsuario.objects.get(user=request.user)
+    context = {
+       'user_profile': user_profile,
+       "form": PubForm,
+   }
+    if request.method == "GET":
+        return render(request, 'crear_publicacion.html', context)
+    else:
+        try:
+            form = PubForm(request.POST, request.FILES)
+            new_task = form.save(commit=False)
+            new_task.user = user_profile
+            new_task.save()
+            return redirect('crear_publicacion')
+        except ValueError:
+            return render(request, 'crear_publicacion.html', {"form": PubForm, "error": "Error al publicar noticias."})
 
 def home(request):
     return render(request, 'home.html')
@@ -179,6 +195,23 @@ def noticia_detalle(request, id_noticias):
         try:
             noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user.id)
             form = NoticiaForm(request.POST,request.FILES, instance=noticia)
+            print(request.FILES)
+            form.save()
+            return redirect('editar_noticias')
+        except ValueError:
+            return render(request, 'noticia_detalle.html', {'noticia': noticia, 'form': form, 'error': 'Error updating noticia.'})
+
+@login_required
+def Pub_detalle(request, id_noticias):
+    user_profile = PerfilUsuario.objects.get(user=request.user.id)
+    if request.method == 'GET':
+        noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user.id)
+        form = PubForm(instance=noticia)
+        return render(request, 'noticia_detalle.html', {'noticia': noticia, 'form': form})
+    else:
+        try:
+            noticia = get_object_or_404(Noticia, pk=id_noticias, user=request.user.id)
+            form = PubForm(request.POST,request.FILES, instance=noticia)
             print(request.FILES)
             form.save()
             return redirect('editar_noticias')

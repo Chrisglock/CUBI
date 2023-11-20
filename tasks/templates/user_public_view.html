@@ -130,7 +130,11 @@
         <div class="profile-description">
             <h2>Noticias y Publicaciones</h2>
             {% for noticia in noticias %}
-            <a href="{% url 'ver_noticia' noticia.id_noticias %}" style="text-decoration:none; color: inherit;" >
+            {% if noticia.tipo == 'Noticia' %}
+                <a href="{% url 'ver_noticia' noticia.id_noticias %}" style="text-decoration:none; color: inherit;" >
+            {% elif noticia.tipo == 'Publicacion' %}  
+                <a href="{% url 'ver_publicacion' noticia.id_noticias %}"style="text-decoration:none; color: inherit;" >
+            {% endif %}
                 <div class="profile-desc-row">
                     <img src="{% static 'media/empresa.png' %}">
                     <div>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-    <link rel="stylesheet" href="{% static 'css/noticiasypublicacion.css' %}">
+    <link rel="stylesheet" href="{% static 'css/noticiasypublicacioncopy.css' %}">
 
 
 <!-- Google Fonts -->
@@ -28,18 +28,23 @@
               <div class="row justify-content-between">
                   {% for noticia in noticias %}
                   {% if noticia.tipo == "Noticia" %}
-                  <div class="col-md-4 mb-3">
-                    <div class="cn-img position-relative">
-                        <a href="{% url 'ver_noticia' noticia.id_noticias %}">
-                            {% if noticia.imagen.url is not None %}
-                                <img src="{{ noticia.imagen.url }}" class="img-fluid blur-image" alt="Imagen de noticia" style="width: 350px; height: 255px;">
-                            {% endif %}
-                            <div class="cn-title position-absolute bottom-0 start-50 translate-middle-x text-center card-title">
-                              <h1 id="titulo_card">{{ noticia.titulo }}</h1>
-                          </div>                          
-                        </a>
-                    </div>
-                  </div>
+                    <div class="cardproj-container">
+                      <a href="{% url 'ver_noticia' noticia.id_noticias %}">
+                      <div class="cardproj cardproj-blue">
+                        <div class="cardproj-innerbox">
+                          <img class="cardproj-img" src="{{ noticia.imagen.url }}" />
+                          <div class="cardproj-textbox">
+                            <div class="cardproj-title">{{ noticia.titulo }}</div>
+                            <div class="cardproj-subtitle">Abstract</div>
+                            <div class="cardproj-description">{{ noticia.descripcion|slice:":260"|safe }}</div>
+                            <div class="cardproj-tagbox">
+                              <span class="cardproj-tag">HTML</span>
+                              <span class="cardproj-tag">CSS</span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                      </div>  
                   {% endif %}
                   {% endfor %}
               </div>

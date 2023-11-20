@@ -54,7 +54,21 @@ class NoticiaForm(forms.ModelForm):
         self.fields['descripcion'].widget.attrs['class'] = 'form-control'
         self.fields['imagen'].widget.attrs['class'] = 'form-control'
         self.fields['tipo'].widget.attrs['class'] = 'form-control'
+        self.fields['tipo'].widget = forms.HiddenInput()
+        self.fields['tipo'].initial = 'Noticia'
 
+class PubForm(forms.ModelForm):
+    class Meta:
+        model = Noticia
+        fields = ['titulo', 'categoria', 'descripcion', 'tipo']
+    def __init__(self, *args, **kwargs):
+        super(PubForm, self).__init__(*args, **kwargs)
+        self.fields['titulo'].widget.attrs['class'] = 'form-control'
+        self.fields['categoria'].widget.attrs['class'] = 'form-control'
+        self.fields['descripcion'].widget.attrs['class'] = 'form-control'
+        self.fields['tipo'].widget.attrs['class'] = 'form-control'
+        self.fields['tipo'].widget = forms.HiddenInput()
+        self.fields['tipo'].initial = 'Publicacion'
 
 class UserForm(ModelForm):
 	class Meta:
