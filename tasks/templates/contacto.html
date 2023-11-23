@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UOH invest center</title>
-
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/noticiasypublicacioncopy.css' %}">
     <link rel="stylesheet" href="{% static 'css/estilloscontactoequipo.css'%}">
-</head>
+
+
+
+     
+
+
 <body>
-    {% include '_navbar.html' %}
-    
+    <h1 class="logo4">Comunicate con <span>nosotros</span></h1>
     <div class="content" style="max-width: 75%; margin: 0 auto;">
-        <h1 class="logo4">Comunicate con <span>nosotros</span></h1>
         <div class="contact-wrapper animated bounceInUp">
             <div class="contact-form">
                 <form method="post" action="{% url 'contacto' %}">
@@ -33,17 +29,19 @@
                 <p>cubi.cl</p>
             </div>
         </div>
+        <!--
         <footer>
             <div class="mapouter">
                 <div class="gmap_canvas">
                     <iframe src="https://maps.google.com/maps?q=Universidad%20de%20O'Higgins&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" style="width: 100%; height: 400px;"></iframe>
                 </div>
             </div>
-        </footer>
+        </footer>-->
     </div>
 
 
 
     <script src="js/script.js"></script>
 </body>
-</html>
+
+{% endblock%}

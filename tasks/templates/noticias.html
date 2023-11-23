@@ -53,18 +53,3 @@
 </body>
 {% endblock %}
    
-<!--
-  <ul>
-  {% for noticia in noticias %}
-  <li>
-    <a href="{% url 'noticia_detalle' noticia.id_noticias %}">
-      <strong>{{noticia.titulo}}</strong>
-      <img src="{{noticia.imagen.url}}"></img>
-    </a>
-    {{noticia.descripcion|safe}}
-    {{noticia.fecha_publicacion|date:'M j Y:i'}}
-    Autor: {{noticia.user.username}}
-  </li>
-  {% endfor %}
-</ul>
--->
