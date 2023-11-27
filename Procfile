@@ -1,0 +1,1 @@
+web gunicorn cubi.wsgi:application --log-file -
