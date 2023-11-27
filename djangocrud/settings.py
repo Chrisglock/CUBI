@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(oa(omhdw75#3qzk_p-6zfdfmvj#%tn=oci!ww+ssog(ib%-o='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -138,8 +138,8 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-STATIC_ROOT = os.path.join(BASE_DIR,'tasks', 'static')
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'))
+STATIC_ROOT = os.path.join(BASE_DIR,'tasks', 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'tasks','static'),)
 django_heroku.settings(locals())
 CKEDITOR_CONFIGS = {
    'default': {
