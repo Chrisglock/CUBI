@@ -138,7 +138,9 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-STATIC_ROOT = os.path.join('tasks', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'tasks', 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'))
+django_heroku.settings(locals())
 CKEDITOR_CONFIGS = {
    'default': {
        'toolbar_Full': [
