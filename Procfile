@@ -1,1 +1,1 @@
-web gunicorn tasks.wsgi:application --log-file -
+web gunicorn djangocrud.wsgi:application --log-file -
