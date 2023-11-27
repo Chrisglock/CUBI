@@ -1,1 +1,1 @@
-web gunicorn cubi.wsgi:application --log-file -
+web gunicorn tasks.wsgi:application --log-file -
