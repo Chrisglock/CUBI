@@ -18,6 +18,7 @@ from django.urls import path,include
 from tasks import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -51,6 +52,11 @@ urlpatterns = [
     path('user_public_view/<int:id_user>', views.user_public_view, name='user_public_view'),
     path('equipo/', views.equipo, name='equipo'),
     path('contacto/', views.contacto_view, name='contacto'),
+    
+    path('reset_password/', auth_views.PasswordResetView.as_view(), name='reset_password'),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset_password/<uid64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]
 
 if settings.DEBUG:
