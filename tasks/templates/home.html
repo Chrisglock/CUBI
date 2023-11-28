@@ -1,58 +1,87 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-    <link rel="stylesheet" href="{% static 'css/estilos11.css' %}">
-    <script src="{% static 'js/script.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<link rel="stylesheet" href="{% static 'css/estilos11.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
 <body>
-  <main>
-
-      <div class="cover">
-          
-          <div class="text__information-cover">
-              <h1>Centro investigativo web Universidad de O'higgins.</h1>
-
-              <p>En el corazón de la innovación y el conocimiento, nuestro centro 
-                  investigativo web de  la Universidad de O'Higgins es un faro de
-                   descubrimiento y excelencia. Nos dedicamos a impulsar la investigación científica 
-                   y tecnológica, abordando desafíos multidisciplinarios que impactan positivamente en la sociedad y el mundo.
-            </p>
-            <!--
-              <div class="buttons__cover">
-                {% if not user.is_authenticated%}
-                    <a href="/signup" class="btn__header-register">Registrarse</a>
-                {% endif %}
-                  <input type="button" class="btn__readMore-cover" value="Leer más">
-              </div>
-              -->
-          </div>
-
-          <div class="media__cover">
-            
-              <video src="{% static 'media/dna.mp4' %}" autoplay playinline loop muted preload="auto"></video>
-          </div>
-
-
-      </div>
-
-      <div class="container__banner">
-
-        <div class="banner">
-            <div class="banner__icon-heart">
-                <img src="{% static 'media/Miniseq.png' %}" id="icon_heart" alt="">
+    <main>
+        <div class="cover">
+            <div class="text__information-cover">
+                <h1>¿Quiénes somos?</h1>
+                <h2>Centro UOH de BioIngeniería</h2>
+                <p class="oculto">
+                    El cáncer es una enfermedad genética compleja y mortal que afecta a un gran número de personas en
+                    Chile, con una alta tasa de mortalidad y un aumento constante en el número de casos. Ante esta
+                    realidad, es crucial implementar la Medicina de Precisión en el país para brindar un tratamiento
+                    personalizado y mejorar los resultados para los pacientes. El Centro UOH de BioIngeniería (CUBI) se
+                    propone liderar este avance, enfocándose en la región de O'Higgins, Chile.
+                    El CUBI busca crear mapas moleculares multiómicos de los cánceres prevalentes en la región,
+                    utilizando tecnologías de vanguardia y algoritmos avanzados. Esto permitirá comprender los perfiles
+                    genéticos y moleculares del cáncer, así como la heterogeneidad y evolución somática de los tumores
+                    chilenos. El equipo propuesto por CUBI, con su destacada capacidad de secuenciación genómica,
+                    procesamiento masivo de datos y experiencia en biología molecular y computacional, desempeñará un
+                    papel protagónico en el logro de estos objetivos.
+                </p>
+                <div class="buttons__cover">
+                    <input type="button" class="btn__readMore-cover" value="Ver más">
+                </div>
             </div>
-            <div class="banner__icon-fire">
-                <img src="{% static 'media/pngegg.png' %}" id="icon_fire" alt="">
-            </div>
-            <div class="banner__text">
-                <h2>Primer genoma humano secuenciado en Chile.</h2>
-                <a href="#">Leer más</a>
+            <div class="media__cover">
+                <video src="{% static 'media/dna.mp4' %}" autoplay playinline loop muted preload="auto"></video>
             </div>
         </div>
 
-    </div>
-      </div>
+        <div class="container__banner">
+            <div class="banner">
+                <div class="banner__icon-heart">
+                    <img src="{% static 'media/Miniseq.png' %}" id="icon_heart" alt="">
+                </div>
+                <div class="banner__icon-fire">
+                    <img src="{% static 'media/pngegg.png' %}" id="icon_fire" alt="">
+                </div>
+                <div class="banner__text">
+                    <h2>CUBI</h2>
+                </div>
+            </div>
 
-  </main>
+            <div class="additional-info">
+                <p>
+                    Di Genoma Lab is a new laboratory with the goal of using genomics, computational algorithms, and
+                    other analytical tools to understand the root cause of cancers and develop treatments for them.
+                    Here, we investigate the use of genomics for the diagnosis and treatment of cancer. The Di Genoma
+                    Lab seeks to create new knowledge about how cancers develop and grow based on these large data sets
+                    generated by genome sequencing. More specifically, the lab is focused on developing new
+                    computational methods and automating the analysis of large amounts of data in order to develop
+                    "new ways to fight cancer". We hope to answer questions such as "How do cancers evolve? What are
+                    they doing?" By analyzing DNA sequences from a patient, we can gain important insights into cancer
+                    progression. The lab is led by Dr. Alex Di Genova, a doctor in complex system engineering with
+                    expertise in genomics and computational biology. The lab currently includes one postdoctoral
+                    fellow and two research engineers.
+                </p>
+                <img src="{% static 'media/geno.jpg' %}" alt="Image Description">
+            </div>
+        </div>
+    </main>
 </body>
+
+<script>
+    $(document).ready(function () {
+        // Oculta el contenido adicional al cargar la página
+        $(".text__information-cover p").addClass("oculto");
+
+        // Maneja el clic en el botón "ver más"
+        $(".btn__readMore-cover").on("click", function () {
+            // Muestra o oculta el contenido adicional
+            $(".text__information-cover p").toggleClass("oculto");
+
+            // Cambia el texto del botón según el estado
+            var buttonText = $(".text__information-cover p").hasClass("oculto") ? "Ver más" : "Ver menos";
+            $(this).val(buttonText);
+        });
+    });
+</script>
 
 {% endblock %}

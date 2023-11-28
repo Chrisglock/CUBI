@@ -117,7 +117,10 @@ main{
     justify-content: center;
     margin-top: 60px;
 }
-
+.oculto {
+    max-height: 100px; /* Ajusta la altura máxima que se mostrará inicialmente */
+    overflow: hidden;
+}
 .text__information-cover{
     width: 50%;
 }
@@ -521,4 +524,19 @@ main{
 
 .dropdown-content a:hover {
     background-color: #f1f1f1;
+}
+
+
+
+.additional-info p {
+    font-size: 18px; /* Tamaño del texto */
+    text-align: justify; /* Justificar el texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+    margin-top: 50PX;
+}
+
+.additional-info img {
+    width: 100%; /* Ajustar el ancho de la imagen al 100% del contenedor */
+    height: auto; /* Mantener la proporción original de la imagen */
+    margin-top: 40px; /* Espacio superior entre el texto e imagen */
 }

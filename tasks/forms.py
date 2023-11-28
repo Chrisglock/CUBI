@@ -14,6 +14,7 @@ class UserForm(ModelForm):
 		exclude = ['user',"alumno","admin",]
 
 class RegisterUserForm(UserCreationForm):
+    email = forms.EmailField(required=True, help_text="Requerido. Ingresa un correo electrónico válido.")
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email','password1','password2')

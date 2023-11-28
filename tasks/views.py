@@ -104,10 +104,12 @@ def create_task(request):
 @login_required
 def crear_noticia(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
+    noticias_destacadas = Noticia.objects.filter(tipo='Noticia').order_by('-fecha_publicacion')[:3]   
     context = {
-       'user_profile': user_profile,
-       "form": NoticiaForm,
-   }
+        'user_profile': user_profile,
+        'noticias_destacadas': noticias_destacadas,
+        "form": NoticiaForm(),
+    }
     if request.method == "GET":
         return render(request, 'crear_noticia.html', context)
     else:
@@ -118,13 +120,15 @@ def crear_noticia(request):
             new_task.save()
             return redirect('crear_noticia')
         except ValueError:
-            return render(request, 'crear_noticia.html', {"form": NoticiaForm, "error": "Error al publicar noticias."})
+            return render(request, 'crear_noticia.html', {"form": NoticiaForm(), "error": "Error al publicar noticias."})
 
 @login_required
 def crear_publicacion(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
+    noticias_destacadas = Noticia.objects.filter(tipo='Noticia').order_by('-fecha_publicacion')[:3]
     context = {
        'user_profile': user_profile,
+       'noticias_destacadas': noticias_destacadas,
        "form": PubForm,
    }
     if request.method == "GET":
@@ -147,8 +151,8 @@ def registrar(request):
 
 def userhome(request):
     user_profile = PerfilUsuario.objects.get(user=request.user)
-    noticias = Noticia.objects.order_by('-fecha_publicacion')[:5] 
-    context = {'user_profile': user_profile, 'noticias': noticias}
+    noticias_destacadas = Noticia.objects.filter(tipo='Noticia').order_by('-fecha_publicacion')[:3]
+    context = {'user_profile': user_profile, 'noticias_destacadas': noticias_destacadas}
     return render(request, 'userhome.html', context)
 
 @login_required

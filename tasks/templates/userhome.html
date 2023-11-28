@@ -29,7 +29,7 @@
                 <li><a href="{% url 'crear_noticia'%}"class="activate-link"><img src="{% static 'media/grupo.png' %}"> <span style="padding-left: 7px;">Crear noticia</span></a></li>
                 <li><a href="{% url 'crear_publicacion'%}"class="activate-link"><img src="{% static 'media/maletin.png' %}"> <span style="padding-left: 7px;">Crear publicacion</span></a></li>
                 <li><a href="{% url 'editar_noticias'%}"class="activate-link"><img src="{% static 'media/periodico2.png' %}"> <span style="padding-left: 7px;">Editar contenido</span></a></li>
-                <li><a href="#"class="activate-link"><img src="{% static 'media/notificacion.png' %}"> <span style="padding-left: 7px;">Notificaciones</span></a></li>             
+                <li><a href="/logout"class="activate-link"><img src="{% static 'media/notificacion.png' %}"> <span style="padding-left: 7px;">Cerrar sesion</span></a></li>             
             </ul>
         </div>
         <div class="navbar-right">
@@ -102,15 +102,16 @@
             {% endblock %}
         </div>
     </div>
-    
     <!------------- Barra derecha ----------->
     <div class="right-sidebar">
         <div class="sidebar-news">
             <img src="{% static 'media/periodico.png' %}" class="info-icon">
             <h3>Noticias destacadas</h3>
-            <a href="#">UOH investigaciones en desarrollo </a>
-            <span>Hace 1 Día &middot; 10,934 Lectores</span>
+            {% for noticia in noticias_destacadas %}
+            <a href="#">{{ noticia.titulo }}</a>
+            <span>{{ noticia.fecha_publicacion }}</span>
             <!-- Resto del contenido -->
+            {% endfor %}
             <a href="#" class="read-more-link">Leer mas</a>
         </div>
     </div>
